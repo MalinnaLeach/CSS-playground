@@ -1,0 +1,3 @@
+Create-React-App tutorial:  https://medium.com/@diamondgfx/learning-react-with-create-react-app-part-1-a12e1833fdc#.aj2udefvw
+Malinna's testing tutorial: https://medium.com/@malinnaleach/testing-react-a-beginners-guide-755a8828c222#.m4l62mxmn
+Philosophy of React: https://camjackson.net/post/9-things-every-reactjs-beginner-should-know
