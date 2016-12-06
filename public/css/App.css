@@ -18,6 +18,11 @@
   font-size: large;
 }
 
+.playground {
+  background-color: red;
+  border: 5px solid #000;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+class Playground extends Component {
   constructor(props) {
     super(props);
 
@@ -8,11 +8,11 @@ class Header extends Component {
 
   render () {
     return (
-      <div className="header">
-        <h1>CSS Playground</h1>
+      <div className="playground">
+      Playground goes here
       </div>
     );
   }
 }
 
-export default Header;
+export default Playground;
