@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-popup": "^0.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
