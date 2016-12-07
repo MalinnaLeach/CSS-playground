@@ -5,7 +5,6 @@ import App from '../src/App';
 import Header from '../src/Header';
 import Playground from '../src/Playground';
 
-
 describe('<App />', () => {
 
   it('renders without crashing', () => {
