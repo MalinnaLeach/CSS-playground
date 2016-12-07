@@ -6,11 +6,10 @@ import Container from '../src/Container';
 
 describe('<Container />', () => {
 
-  it("changes it's colour on click", () => {
-    const wrapper = mount(<Container />);
-    expect(wrapper.state().backgroundColor).toEqual('red');
-    wrapper.simulate('click');
-    expect(wrapper.state().backgroundColor).toEqual('blue');
+  it("sets it's colour based on props", () => {
+    const wrapper = mount(<Container color="green"/>);
+    const object = wrapper.find(".container");
+    expect(object.props().style.backgroundColor).toEqual('green');
   });
 
 

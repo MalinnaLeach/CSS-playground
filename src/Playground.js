@@ -6,24 +6,22 @@ import '../public/css/Playground.css';
 class Playground extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
     this.checkDiv = this.checkDiv.bind(this);
   }
 
   checkDiv() {
-    if (this.props.divCount === 1) {return <Container />}
+    if (this.props.divCount === 1) {return <Container color={this.props.color}/>};
   }
 
   render () {
     return (
-      <div className="playground" onClick={this.createDiv}>
+      <div className="playground" >
         Playground goes here
         {this.checkDiv()}
       </div>
     );
   }
-
-
-
 
 }
 
