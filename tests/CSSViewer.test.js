@@ -12,4 +12,9 @@ describe('<CSSViewer />', () => {
     expect(wrapper.find('.header').length).toEqual(1);
   });
 
+  it("displays the css code", () => {
+    const wrapper = shallow(<CSSViewer />);
+    expect(wrapper.find('.cssCode').length).toEqual(1);
+  })
+
 });
