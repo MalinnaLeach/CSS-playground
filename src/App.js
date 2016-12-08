@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Playground from './Playground';
-import ControlPanel from './ControlPanel';
+import CSSViewer from './CSSViewer';
 import '../public/css/App.css';
 import ColorPicker from 'react-color-picker';
 import 'react-color-picker/index.css'
@@ -20,7 +20,7 @@ class App extends Component {
     <div className="App">
       <Header />
       <Playground divCount = {this.state.divs} color = {this.state.color}/>
-      <ControlPanel addChildDiv = {this.addChildDiv} changeColor = {this.changeColor}/>
+      <CSSViewer />
     </div>
     );
   };
