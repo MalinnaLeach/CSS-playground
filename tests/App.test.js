@@ -5,6 +5,8 @@ import App from '../src/App';
 import Header from '../src/Header';
 import Playground from '../src/Playground';
 import ControlPanel from '../src/ControlPanel';
+import CSSViewer from '../src/CSSViewer';
+
 
 describe('<App />', () => {
 
@@ -22,9 +24,15 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(Playground).length).toEqual(1);
   });
+  //
+  // it('renders a control panel div', () => {
+  //   const wrapper = shallow(<App />);
+  //   expect(wrapper.find(ControlPanel).length).toEqual(1);
+  // })
 
-  it('renders a control panel div', () => {
+  it('renders a CSS viewer div', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find(ControlPanel).length).toEqual(1);
+    expect(wrapper.find(CSSViewer).length).toEqual(1);
   })
+
 });
