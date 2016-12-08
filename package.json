@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "react": "^15.4.1",
+    "react-color-picker": "^4.0.2",
     "react-dom": "^15.4.1",
     "react-popup": "^0.4.2"
   },
