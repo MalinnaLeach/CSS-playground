@@ -25,11 +25,11 @@ class ControlPanel extends Component {
   }
 
   addChildDiv() {
-    // this.props.addChildDiv();
+    this.props.addChildDiv();
     const here = this;
-    Popup.create({
-      content: <ColorPicker value={here.state.color} onDrag={here.onDrag.bind(here)}/>
-    });
+    // Popup.create({
+    //   content: <ColorPicker value={here.state.color} onDrag={here.onDrag.bind(here)}/>
+    // });
   }
 
   onDrag(color, c) {
