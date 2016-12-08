@@ -1,3 +1,11 @@
 Create-React-App tutorial:  https://medium.com/@diamondgfx/learning-react-with-create-react-app-part-1-a12e1833fdc#.aj2udefvw
 Malinna's testing tutorial: https://medium.com/@malinnaleach/testing-react-a-beginners-guide-755a8828c222#.m4l62mxmn
 Philosophy of React: https://camjackson.net/post/9-things-every-reactjs-beginner-should-know
+CSS selectors: http://www.w3schools.com/cssref/css_selectors.asp
+Using Reacts in-line styling approach: https://www.kirupa.com/react/styling_in_react.htm
+React JSX guide: https://facebook.github.io/react/docs/introducing-jsx.html
+Using Enzyme: http://codeheaven.io/testing-react-components-with-enzyme/
+Enzyme github page: https://github.com/airbnb/enzyme#installation
+Communication between React elements:  http://andrewhfarmer.com/component-communication/#1-props
+Another one on the above theme:  http://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
+React file download: https://www.npmjs.com/package/react-file-download
