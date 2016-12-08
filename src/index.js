@@ -11,5 +11,5 @@ ReactDOM.render(
 
 ReactDOM.render(
   <Popup />,
-  document.getElementById('popupContainer')
+  document.getElementById('popup')
 );

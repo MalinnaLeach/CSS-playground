@@ -3,6 +3,9 @@ import Header from './Header';
 import Playground from './Playground';
 import ControlPanel from './ControlPanel';
 import '../public/css/App.css';
+import ColorPicker from 'react-color-picker';
+import 'react-color-picker/index.css'
+
 
 class App extends Component {
   constructor(props) {
