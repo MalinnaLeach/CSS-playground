@@ -7,7 +7,7 @@ import App from '../src/App';
 
 describe('<ControlPanel />', () => {
 
-  it("can create a div inside playgorund", () => {
+  xit("can create a div inside playgorund", () => {
     const wrapper = mount(<App />);
     const button = wrapper.find('#createDiv');
     expect(wrapper.find('div').length).toEqual(4);
