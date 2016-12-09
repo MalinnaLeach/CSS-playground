@@ -8,7 +8,8 @@ class Container extends Component {
     super(props);
     this.onDrag = this.onDrag.bind(this);
     this.showMenu = this.showMenu.bind(this);
-    this.state = {color: "white"  };
+    this.state = {color: "white", divs: []};
+    this.addChildDiv = this.addChildDiv.bind(this);
   };
 
   render () {
@@ -18,14 +19,25 @@ class Container extends Component {
         style={ {backgroundColor: this.state.color} }
         onClick={this.showMenu}
         >
+        {this.renderDiv()}
       </div>
     );
+  }
+
+  renderDiv() {
+    return this.state.divs.map(div => (
+      <Container color={this.state.color} />
+    ))
+  }
+
+  addChildDiv() {
+    this.setState({ divs: [...this.state.divs, "div"]});
   }
 
   showMenu () {
     const here = this;
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag}/>
+      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv}/>
     })
   };
 
