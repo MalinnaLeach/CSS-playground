@@ -8,7 +8,7 @@ import '../public/css/Playground.css';
 class Playground extends Component {
   constructor(props) {
     super(props);
-    this.state = {className: "playground", style: {backgroundColor: "#fff"}, divs: []}
+    this.state = {className: "playground", style: {backgroundColor: "#fff"}, containers: []}
     this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
@@ -16,13 +16,15 @@ class Playground extends Component {
   }
 
   renderDiv() {
-    return this.state.divs.map(div => (
+    return this.state.containers.map(div => (
       <Container color={this.state.color} />
     ))
   }
 
-  addChildDiv() {
-    this.setState({ divs: [...this.state.divs, "div"]});
+  addChildDiv(className) {
+    this.setState({ containers: [...this.state.containers, className]});
+    cssModule[className] = {}
+    this.props.updateCssViewer()
   }
 
   showMenu() {
