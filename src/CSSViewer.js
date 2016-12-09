@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import Popup from 'react-popup';
 import '../public/css/CSSViewer.css';
 import cssModule from './cssModule';
 import CSSTranslator from './CSSTranslator';
 
 class CSSViewer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   csstext () {
     return(
       Object.keys(cssModule).map(name => (
-        <CSSTranslator name={name} />
+        <CSSTranslator key={name} name={name} />
       ))
     )
   }

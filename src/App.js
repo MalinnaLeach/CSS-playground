@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Playground from './Playground';
+import Container from './Container';
 import CSSViewer from './CSSViewer';
 import '../public/css/App.css';
-import ColorPicker from 'react-color-picker';
-import 'react-color-picker/index.css'
-
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {divs: 0, color: "red"};
+    this.state = { bgStyle: {float: "left", backgroundColor: "white"} };
     this.addChildDiv = this.addChildDiv.bind(this)
     this.changeColor = this.changeColor.bind(this)
     this.updateCssViewer = this.updateCssViewer.bind(this)
@@ -20,7 +17,7 @@ class App extends Component {
   return (
     <div className="App">
       <Header />
-      <Playground divCount = {this.state.divs} color = {this.state.color} updateCssViewer = {this.updateCssViewer}/>
+      <Container key="background" className="background" style={this.state.bgStyle} updateCssViewer={this.updateCssViewer}/>
       <CSSViewer />
     </div>
     );

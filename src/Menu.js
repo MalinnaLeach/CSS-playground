@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color-picker';
-import cssModule from './cssModule';
 import 'react-color-picker/index.css'
 
 class Menu extends Component {
@@ -24,7 +23,7 @@ class Menu extends Component {
       {this.state.color}
       </div>
       <input type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-      <button onClick = {this.handleNewDiv}>Create new div</button>
+      <button onClick={this.handleNewDiv}>Create new div</button>
       </div>
     );
   }
