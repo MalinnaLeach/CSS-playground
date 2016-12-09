@@ -9,6 +9,7 @@ class Menu extends Component {
     this.state = {color: 'white', className: ''};
     this.handleClassName = this.handleClassName.bind(this)
     this.sendClassName = this.sendClassName.bind(this)
+    this.addChildDiv = this.addChildDiv.bind(this)
   }
 
   render () {
@@ -23,13 +24,8 @@ class Menu extends Component {
       }}>
       {this.state.color}
       </div>
-      <form>
-      <label>
       <input type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-      </label>
-      <button type="button" onClick={this.sendClassName} > submit </button>
-      </form>
-      <button onClick = {this.props.addChildDiv}>Create new div</button>
+      <button onClick = {this.addChildDiv}>Create new div</button>
       </div>
     );
   }
@@ -39,12 +35,14 @@ class Menu extends Component {
   }
 
   sendClassName() {
-    console.log(cssModule)
-    console.log(this.state.className)
-    cssModule[this.state.className] = ""
-    console.log(this.state.className)
+    cssModule[this.state.className] = {}
   }
 
+  addChildDiv() {
+    this.sendClassName();
+    this.props.addChildDiv();
+
+  }
 
   onDrag (color, c) {
     this.props.onDrag(color);
