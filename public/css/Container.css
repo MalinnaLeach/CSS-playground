@@ -1,3 +1,10 @@
+.background {
+  float: left;
+  border: 5px solid #000;
+  height: 100vh;
+  width: 75%;
+}
+
 .container {
   border: 5px solid #000;
   width: 50%;

@@ -9,7 +9,7 @@ class CSSTranslator extends Component {
 
  cssLine(css) {
    return Object.keys(css).map(property => (
-     <p> &nbsp; {this.toCssStyle(property)}&#58; {css[property]}&#59; </p>
+     <p key={property}> &nbsp; {this.toCssStyle(property)}&#58; {css[property]}&#59; </p>
    ))
  }
 
