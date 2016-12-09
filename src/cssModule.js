@@ -1,5 +1,5 @@
 const cssModule = {
   "playground":
-  {"background-color": "#333"}
+  {"background-color": "color", "width": "50%"}
 }
 export default cssModule;
