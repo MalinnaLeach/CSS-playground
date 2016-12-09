@@ -13,13 +13,14 @@ class App extends Component {
     this.state = {divs: 0, color: "red"};
     this.addChildDiv = this.addChildDiv.bind(this)
     this.changeColor = this.changeColor.bind(this)
+    this.updateCssViewer = this.updateCssViewer.bind(this)
   }
 
   render () {
   return (
     <div className="App">
       <Header />
-      <Playground divCount = {this.state.divs} color = {this.state.color}/>
+      <Playground divCount = {this.state.divs} color = {this.state.color} updateCssViewer = {this.updateCssViewer}/>
       <CSSViewer />
     </div>
     );
@@ -31,6 +32,10 @@ class App extends Component {
 
   changeColor() {
     this.setState({color: "blue"})
+  }
+
+  updateCssViewer() {
+    this.forceUpdate();
   }
 }
 

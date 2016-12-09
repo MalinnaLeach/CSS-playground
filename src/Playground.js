@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Popup from 'react-popup';
 import Container from './Container';
 import Menu from '../src/Menu'
+import cssModule from '../src/cssModule'
 import '../public/css/Playground.css';
 
 class Playground extends Component {
   constructor(props) {
     super(props);
-    this.state = {color: "white", divs: []}
+    this.state = {className: "playground", style: {backgroundColor: "#fff"}, divs: []}
     this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
@@ -33,13 +34,16 @@ class Playground extends Component {
 
   onDrag(color) {
     this.setState({
-      color: color
-    })
+      style: {backgroundColor: color}
+    }, () => {
+      cssModule[this.state.className] = this.state.style
+      this.props.updateCssViewer()
+    });
   }
 
   render () {
     return (
-      <div className="playground" onClick={ this.showMenu } style={{backgroundColor: this.state.color}}>
+      <div className="playground" onClick={ this.showMenu } style={this.state.style}>
         Playground goes here
         {this.renderDiv()}
       </div>

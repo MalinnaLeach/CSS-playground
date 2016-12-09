@@ -4,12 +4,17 @@ import cssModule from './cssModule';
 class CSSTranslator extends Component {
  constructor(props) {
    super(props);
+   this.toCssStyle = this.toCssStyle.bind(this);
  }
 
  cssLine(css) {
    return Object.keys(css).map(property => (
-     <p> &nbsp; {property}&#58; {css[property]}&#59; </p>
+     <p> &nbsp; {this.toCssStyle(property)}&#58; {css[property]}&#59; </p>
    ))
+ }
+
+ toCssStyle(camelCase) {
+   return camelCase.replace(/\.?([A-Z]+)/g, function (x,y){return "-" + y.toLowerCase()}).replace(/^-/, "");
  }
 
  render () {
