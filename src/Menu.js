@@ -20,6 +20,7 @@ class Menu extends Component {
        }}>
          {this.state.color}
        </div>
+       <button onClick = {this.props.addChildDiv}>Create new div</button>
       </div>
     );
   }

@@ -8,14 +8,14 @@ class Playground extends Component {
   constructor(props) {
     super(props);
     this.state = {color: "white", divs: []}
-    this.choices = this.choices.bind(this);
+    this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
   }
 
   renderDiv() {
-    return this.state.divs.map(div=> (
+    return this.state.divs.map(div => (
       <Container color={this.state.color} />
     ))
   }
@@ -24,7 +24,7 @@ class Playground extends Component {
     this.setState({ divs: [...this.state.divs, "div"]});
   }
 
-  choices() {
+  showMenu() {
     const here = this
     Popup.create({
       content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv}/>
@@ -39,7 +39,7 @@ class Playground extends Component {
 
   render () {
     return (
-      <div className="playground" onClick={ this.choices } style={{backgroundColor: this.state.color}}>
+      <div className="playground" onClick={ this.showMenu } style={{backgroundColor: this.state.color}}>
         Playground goes here
         {this.renderDiv()}
       </div>
