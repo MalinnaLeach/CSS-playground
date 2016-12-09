@@ -12,6 +12,4 @@ describe('<Playground />', () => {
     const wrapper2 = mount(<Playground divCount={1}/>);
     expect(wrapper2.find('div').length).toEqual(2);
   });
-
-
 });
