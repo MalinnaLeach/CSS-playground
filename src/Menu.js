@@ -11,16 +11,12 @@ class Menu extends Component {
     }
 
   render () {
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', border: "3px solid black"}
     return (
       <div className="menu">
       <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
-      <div style={{
-        background: this.state.color,
-        width: 100,
-        height: 50,
-        color: 'white'
-      }}>
-      {this.state.color}
+      <div style={colourBoxStyle}>
+        {this.state.color}
       </div>
       <input type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button onClick={this.handleNewDiv}>Create new div</button>

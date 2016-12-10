@@ -13,39 +13,18 @@ class Container extends Component {
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
-    this.adjustContainerStyle = this.adjustContainerStyle.bind(this);
-    this.setInitialInfo(props)
+    this.updateCssModule();
   }
 
-  setInitialInfo(props) {
-    if (props.parent === "background") {
-      cssModule[props.className]["border"] = "5px solid #000";
-      cssModule[props.className]["width"] = "50%";
-      cssModule[props.className]["height"] = "50%";
-    }
+  updateCssModule() {
+    cssModule[this.state.className] = this.state.style;
+    this.props.updateCssViewer();
   }
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} style={this.newContainerStyle()} updateCssViewer={this.props.updateCssViewer} parent={this.state.className}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", border: "3px solid #000"}}/>
     ))
-  }
-
-  newContainerStyle() {
-    var style = {};
-    for (var key in this.state.style) {
-      style[key] = this.state.style[key];
-    }
-    style["width"] = "50%";
-    style["height"] = "50%";
-    style["border"] = "5px solid #000";
-    return style
-  }
-
-  adjustContainerStyle(property, value) {
-    var style = this.state.style;
-    style[property] = value;
-    return style;
   }
 
   addChildDiv(className) {
@@ -62,12 +41,9 @@ class Container extends Component {
   }
 
   onDrag(color) {
-    this.setState({
-      style: this.adjustContainerStyle("backgroundColor", color)
-    }, () => {
-      cssModule[this.state.className]["backgroundColor"] = color
-      this.props.updateCssViewer()
-    });
+    this.state.style["backgroundColor"] = color;
+    cssModule[this.state.className]["backgroundColor"] = color;
+    this.props.updateCssViewer();
   }
 
   render () {

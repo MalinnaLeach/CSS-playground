@@ -9,3 +9,5 @@ Enzyme github page: https://github.com/airbnb/enzyme#installation
 Communication between React elements:  http://andrewhfarmer.com/component-communication/#1-props
 Another one on the above theme:  http://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
 React file download: https://www.npmjs.com/package/react-file-download
+HTML special characters: http://www.degraeve.com/reference/specialcharacters.php
+Binding functions in js: http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/

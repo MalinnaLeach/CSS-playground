@@ -4,7 +4,7 @@ import cssModule from './cssModule';
 class CSSTranslator extends Component {
  constructor(props) {
    super(props);
-   this.toCssStyle = this.toCssStyle.bind(this);
+
  }
 
  cssLine(css) {
