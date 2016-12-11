@@ -9,3 +9,4 @@ Enzyme github page: https://github.com/airbnb/enzyme#installation
 Communication between React elements:  http://andrewhfarmer.com/component-communication/#1-props
 Another one on the above theme:  http://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
 React file download: https://www.npmjs.com/package/react-file-download
+Microsoft video beginners guide to React: https://mva.microsoft.com/en-us/training-courses/react-the-definitive-beginners-guide-16547?l=txxM6IzfC_9406218965
