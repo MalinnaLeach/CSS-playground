@@ -1,14 +1,14 @@
 import cssModule from './cssModule';
 
-const CSStoFile = (context) => {
+const CSStoFile = () => {
   var string = ""
-  Object.keys(cssModule).forEach(function(name) {
+  for (var name of Object.keys(cssModule)) {
     string += ("." + name + " {\n");
-    Object.keys(cssModule[name]).forEach(function(property) {
+    for (var property of Object.keys(cssModule[name])) {
       string += ("  " + (toCssStyle(property)) + ": " + cssModule[name][property] + ";\n")
-    })
+    }
     string += "}\n\n"
-  })
+  }
   return string
 }
 

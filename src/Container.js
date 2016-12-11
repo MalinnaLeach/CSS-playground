@@ -13,8 +13,11 @@ class Container extends Component {
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
-    this.updateCssModule();
   }
+
+  componentDidMount() {
+    this.updateCssModule();
+  };
 
   updateCssModule() {
     cssModule[this.state.className] = this.state.style;

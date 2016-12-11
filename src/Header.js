@@ -17,7 +17,7 @@ class Header extends Component {
     return (
       <div className="header">
         <h1>CSS Playground</h1>
-        <button onClick={this.codeDownload}>Download CSS</button>
+        <button id="download" onClick={this.codeDownload}>Download CSS</button>
       </div>
     );
   }
