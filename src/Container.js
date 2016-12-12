@@ -13,6 +13,8 @@ class Container extends Component {
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
   }
 
   componentDidMount() {
@@ -26,7 +28,7 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", border: "3px solid #000"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}}/>
     ))
   }
 
@@ -39,7 +41,7 @@ class Container extends Component {
   showMenu() {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv}/>,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} addChildDiv={here.addChildDiv}/>,
       buttons: {
         right: ['ok']
       }
@@ -50,6 +52,18 @@ class Container extends Component {
     this.state.style["backgroundColor"] = color;
     cssModule[this.state.className]["backgroundColor"] = color;
     this.props.updateCssViewer();
+  }
+
+  increaseBorderWidth() {
+    var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
+    this.state.style["borderWidth"] = String((thickness + 1)) + "px"
+    this.forceUpdate()
+  }
+
+  decreaseBorderWidth() {
+    var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
+    this.state.style["borderWidth"] = String((thickness - 1)) + "px"
+    this.forceUpdate()
   }
 
   render () {

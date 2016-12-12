@@ -8,10 +8,12 @@ class Menu extends Component {
     this.state = {color: 'white', className: ''};
     this.handleClassName = this.handleClassName.bind(this)
     this.handleNewDiv = this.handleNewDiv.bind(this)
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
     }
 
   render () {
-    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', border: "3px solid black"}
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
     return (
       <div className="menu">
       <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
@@ -20,6 +22,8 @@ class Menu extends Component {
       </div>
       <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+      <button id="increase" onClick={this.increaseBorderWidth}>+</button>
+      <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       </div>
     );
   }
@@ -30,6 +34,14 @@ class Menu extends Component {
 
   handleNewDiv () {
     this.props.addChildDiv(this.state.className)
+  }
+
+  increaseBorderWidth () {
+    this.props.increaseBorderWidth()
+  }
+
+  decreaseBorderWidth () {
+    this.props.decreaseBorderWidth()
   }
 
   onDrag (color, c) {
