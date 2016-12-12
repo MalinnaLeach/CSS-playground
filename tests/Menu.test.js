@@ -19,7 +19,7 @@ describe ("Menu", () => {
     expect(wrapper.state().color).toEqual("blue");
   })
 
-  it("will update itself and run a props function when new div requested", () => {
+  it("will run a props function when new div requested", () => {
     const mockAddChildDiv = jest.fn();
     const wrapper = mount(<Menu addChildDiv={mockAddChildDiv}/>);
     const textInput = wrapper.find("#classInput");
@@ -28,6 +28,22 @@ describe ("Menu", () => {
     button.simulate('click');
     expect(mockAddChildDiv.mock.calls).toEqual([["newTestDiv"]]);
     expect(wrapper.state().className).toEqual("newTestDiv");
+  })
+
+  it("will run a props function with h1 argument when clicked add title", () => {
+    const mockAddChildText = jest.fn();
+    const wrapper = mount(<Menu addChildText={mockAddChildText}/>);
+    const button = wrapper.find("#newTitle");
+    button.simulate('click');
+    expect(mockAddChildText.mock.calls).toEqual([["h1"]]);
+  })
+
+  it("will run a props function with p argument when clicked add paragraph", () => {
+    const mockAddChildText = jest.fn();
+    const wrapper = mount(<Menu addChildText={mockAddChildText}/>);
+    const button = wrapper.find("#newParagraph");
+    button.simulate('click');
+    expect(mockAddChildText.mock.calls).toEqual([["p"]]);
   })
 
 })

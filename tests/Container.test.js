@@ -27,6 +27,11 @@ describe('<Container />', () => {
     expect(cssModule["babyDiv"]).toEqual({"backgroundColor": "inherit", "border": "3px solid #000", "float": "left", "height": "50%", "width": "50%"})
   });
 
+  it("is able to add a text box", () => {
+    wrapper.instance().addChildText("p");
+    expect(wrapper.find(".p").length).toEqual(1);
+  });
+
   it("can update it's background colour", () => {
     wrapper.instance().onDrag("blue");
     expect(wrapper.state().style.backgroundColor).toEqual("blue")

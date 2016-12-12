@@ -9,6 +9,8 @@ class Menu extends Component {
     this.state = {color: 'white', className: ''};
     this.handleClassName = this.handleClassName.bind(this)
     this.handleNewDiv = this.handleNewDiv.bind(this)
+    this.handleNewTitle = this.handleNewTitle.bind(this)
+    this.handleNewParagraph = this.handleNewParagraph.bind(this)
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
     this.changeBorderStyle = this.changeBorderStyle.bind(this)
@@ -19,18 +21,28 @@ class Menu extends Component {
     var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
     return (
       <div className="menu">
-          <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
-        <div style={colourBoxStyle}>
-          {this.state.color}
-        </div>
-        <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-        <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-        <button id="increase" onClick={this.increaseBorderWidth}>+</button>
-        <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
-        <h3>Select your border style:</h3>
-        <Dropdown changeBorderStyle={here.changeBorderStyle}/>
+      <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
+      <div style={colourBoxStyle}>
+        {this.state.color}
+      </div>
+      <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+      <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+      <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
+      <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
+      <button id="increase" onClick={this.increaseBorderWidth}>+</button>
+      <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
+      <h3>Select your border style:</h3>
+      <Dropdown changeBorderStyle={here.changeBorderStyle}/>
       </div>
     );
+  }
+
+  handleNewTitle() {
+    this.props.addChildText("h1");
+  }
+
+  handleNewParagraph() {
+    this.props.addChildText("p");
   }
 
   handleClassName(e) {
