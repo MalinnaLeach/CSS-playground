@@ -19,6 +19,7 @@ class Container extends Component {
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
+    this.changeAlignment = this.changeAlignment.bind(this);
   }
 
   render () {
@@ -33,8 +34,10 @@ class Container extends Component {
   showMenu() {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
-      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv}/>,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
+      decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
+      addChildText={here.addChildText} />,
       buttons: {
         right: ['ok']
       }
@@ -63,15 +66,6 @@ class Container extends Component {
     this.setState({ text: [...this.state.text, textType]});
   }
 
-  showMenu() {
-    const here = this
-    Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv} addChildText={here.addChildText}/>,
-      buttons: {
-        right: ['ok']
-      }
-    })
-  }
 
 ///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
   onDrag(color) {
@@ -104,6 +98,11 @@ class Container extends Component {
 
   setDivHeight(height) {
     this.state.style["height"] = height;
+    this.props.updateCssViewer();
+  }
+    
+  changeAlignment(alignment) {
+    this.state.style["float"] = alignment
     this.props.updateCssViewer();
   }
 ///////////////////////////////////////////////////////////////////////

@@ -15,11 +15,9 @@ class Menu extends Component {
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
-    this.changeBorderStyle = this.changeBorderStyle.bind(this);
     }
 
   render () {
-    const here = this
     var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
     return (
       <div className="menu">
@@ -42,10 +40,13 @@ class Menu extends Component {
       <button id="increase" onClick={this.increaseBorderWidth}>+</button>
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       <h3>Select your border style:</h3>
-      <Dropdown changeBorderStyle={here.changeBorderStyle}/>
+      <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+      <h3>Container alignment:</h3>
+      <Dropdown items={["left", "right", "center"]} eventHandler={this.props.changeAlignment}/>
       </div>
     );
   }
+
 
   handleNewTitle() {
     this.props.addChildText("h1");
@@ -76,10 +77,6 @@ class Menu extends Component {
     this.props.decreaseBorderWidth();
   }
 
-  changeBorderStyle(style) {
-    this.props.changeBorderStyle(style);
-  }
-
   setDivWidth(width) {
     this.props.setDivWidth(width);
   }
@@ -87,6 +84,8 @@ class Menu extends Component {
   setDivHeight(height) {
     this.props.setDivHeight(height);
   }
+
+
 }
 
 export default Menu;
