@@ -31,9 +31,12 @@ class Menu extends Component {
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       <h3>Select your border style:</h3>
       <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+      <h3>Container alignment:</h3>
+      <Dropdown items={["left", "right", "center"]} eventHandler={this.props.changeAlignment}/>
       </div>
     );
   }
+
 
   handleNewTitle() {
     this.props.addChildText("h1");
