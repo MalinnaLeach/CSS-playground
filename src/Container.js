@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import Popup from 'react-popup';
-import Menu from '../src/Menu'
-import cssModule from '../src/cssModule'
+import Menu from './Menu'
+import AddText from './AddText'
+import cssModule from './cssModule'
 import '../public/css/Container.css';
 
 
 class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = {className: this.props.className, style: this.props.style, containers: [] }
+    this.state = {className: this.props.className, style: this.props.style, containers: [], text: [] }
     this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
+    this.addChildText = this.addChildText.bind(this);
   }
 
   componentDidMount() {
@@ -30,10 +32,20 @@ class Container extends Component {
     ))
   }
 
+  renderText() {
+    return this.state.text.map(text => (
+      <AddText key={text} textType={text} />
+    ))
+  }
+
   addChildDiv(className) {
     cssModule[className] = {}
     this.setState({ containers: [...this.state.containers, className]});
     this.props.updateCssViewer()
+  }
+
+  addChildText(textType) {
+    this.setState({ text: [...this.state.text, textType]});
   }
 
   showMenu() {
@@ -56,6 +68,7 @@ class Container extends Component {
     return (
       <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
         {this.renderDiv()}
+        {this.renderText()}
       </div>
     );
   }
