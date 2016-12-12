@@ -4,15 +4,12 @@ class Dropdown extends Component {
  constructor() {
    super();
    this.eventHandler = this.eventHandler.bind(this);
-   this.state = {
-     selectValue:'solid'
-   };
  }
 
  render() {
    return (
      <div>
-       <select value={this.state.selectValue} onChange={this.eventHandler}>
+       <select onChange={this.eventHandler}>
          <option value="solid">Solid</option>
          <option value="dashed">Dashed</option>
          <option value="dotted">Dotted</option>
@@ -28,7 +25,6 @@ class Dropdown extends Component {
  changeBorderStyle(style) {
    this.props.changeBorderStyle(style);
  }
-
 
 }
 
