@@ -33,8 +33,8 @@ class Container extends Component {
   }
 
   renderText() {
-    return this.state.text.map(text => (
-      <AddText key={text} textType={text} />
+    return this.state.text.map((text, index) => (
+      <AddText key={index} textType={text} />
     ))
   }
 
@@ -51,7 +51,7 @@ class Container extends Component {
   showMenu() {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv}/>,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv} addChildText={here.addChildText}/>,
       buttons: {
         right: ['ok']
       }

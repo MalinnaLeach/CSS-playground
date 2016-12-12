@@ -8,6 +8,8 @@ class Menu extends Component {
     this.state = {color: 'white', className: ''};
     this.handleClassName = this.handleClassName.bind(this)
     this.handleNewDiv = this.handleNewDiv.bind(this)
+    this.handleNewTitle = this.handleNewTitle.bind(this)
+    this.handleNewParagraph = this.handleNewParagraph.bind(this)
     }
 
   render () {
@@ -20,8 +22,18 @@ class Menu extends Component {
       </div>
       <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+      <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
+      <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
       </div>
     );
+  }
+
+  handleNewTitle() {
+    this.props.addChildText("h1");
+  }
+
+  handleNewParagraph() {
+    this.props.addChildText("p");
   }
 
   handleClassName(e) {
