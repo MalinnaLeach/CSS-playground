@@ -17,6 +17,8 @@ class Container extends Component {
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
+    this.setDivWidth = this.setDivWidth.bind(this);
+    this.setDivHeight = this.setDivHeight.bind(this);
   }
 
   render () {
@@ -31,7 +33,7 @@ class Container extends Component {
   showMenu() {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv}/>,
       buttons: {
         right: ['ok']
@@ -57,7 +59,6 @@ class Container extends Component {
     this.props.updateCssViewer()
   }
 
-
   addChildText(textType) {
     this.setState({ text: [...this.state.text, textType]});
   }
@@ -79,8 +80,6 @@ class Container extends Component {
     this.props.updateCssViewer();
   }
 
-
-
   increaseBorderWidth() {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
     this.state.style["borderWidth"] = String((thickness + 1)) + "px"
@@ -94,8 +93,17 @@ class Container extends Component {
   }
 
   changeBorderStyle(style) {
-
     this.state.style["borderStyle"] = style;
+    this.props.updateCssViewer();
+  }
+
+  setDivWidth(width) {
+    this.state.style["width"] = width;
+    this.props.updateCssViewer();
+  }
+
+  setDivHeight(height) {
+    this.state.style["height"] = height;
     this.props.updateCssViewer();
   }
 ///////////////////////////////////////////////////////////////////////
