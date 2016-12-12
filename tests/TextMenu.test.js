@@ -13,4 +13,16 @@ describe ("<TextMenu />", () => {
     expect(mockUpdateText.mock.calls).toEqual([["here is my lovely text"]]);
   })
 
+  it("show a placeholder when content is null", () => {
+    const wrapper = mount(<TextMenu content="" />);
+    expect(wrapper.instance().valueCheck()).toEqual(null)
+    expect(wrapper.instance().placeholderCheck()).toEqual("Input your text")
+  })
+
+  it("show the content when there is previous content", () => {
+    const wrapper = mount(<TextMenu content="The content" />);
+    expect(wrapper.instance().valueCheck()).toEqual("The content")
+    expect(wrapper.instance().placeholderCheck()).toEqual(null)
+  })
+
 })

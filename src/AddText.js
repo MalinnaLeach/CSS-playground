@@ -9,6 +9,8 @@ class AddText extends Component {
     this.renderTextType = this.renderTextType.bind(this)
     this.updateText = this.updateText.bind(this)
     this.showTextMenu = this.showTextMenu.bind(this)
+    this.setContent = this.setContent.bind(this)
+
   }
 
   renderTextType () {
@@ -23,10 +25,18 @@ class AddText extends Component {
     this.setState({ content: text })
   }
 
+  setContent() {
+    if (this.state.content === "Click here to edit text") {
+      return ""
+    } else{
+      return this.state.content
+    }
+  }
+
   showTextMenu () {
     const here = this
     Popup.create({
-      content: <TextMenu updateText={here.updateText}/>,
+      content: <TextMenu updateText={here.updateText} content={here.setContent()}/>,
       buttons: {
         right: ['ok']
       }
