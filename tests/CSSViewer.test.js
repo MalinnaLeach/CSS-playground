@@ -2,19 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import CSSViewer from '../src/CSSViewer';
-import App from '../src/App';
-
+import CSSTranslator from '../src/CSSTranslator';
 
 describe('<CSSViewer />', () => {
 
-  it("has a header", () => {
+  it("renders a CSSTranslator", () => {
     const wrapper = shallow(<CSSViewer />);
-    expect(wrapper.find('.header').length).toEqual(1);
-  });
-
-  it("displays the css code", () => {
-    const wrapper = shallow(<CSSViewer />);
-    expect(wrapper.find('.cssCode').length).toEqual(1);
+    expect(wrapper.find(CSSTranslator).length).toEqual(1);
   })
 
 });

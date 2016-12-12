@@ -1,0 +1,36 @@
+.background  {
+  background-color: #a1e9ca;
+  height: 100vh;
+}
+
+.parent  {
+  background-color: #a81818;
+  float: left;
+  width: 50%;
+  height: 50%;
+  border: 3px solid #000;
+}
+
+.child1  {
+  background-color: #aeb442;
+  float: left;
+  width: 50%;
+  height: 50%;
+  border: 3px solid #000;
+}
+
+.child2  {
+  background-color: #9669b3;
+  float: left;
+  width: 50%;
+  height: 50%;
+  border: 3px solid #000;
+}
+
+.grandchild  {
+  background-color: inherit;
+  float: left;
+  width: 50%;
+  height: 50%;
+  border: 3px solid #000;
+}
