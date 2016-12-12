@@ -32,7 +32,7 @@ class Container extends Component {
     const here = this
     Popup.create({
       content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
-      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv}/>,
+      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv} addChildText={here.addChildText} />,
       buttons: {
         right: ['ok']
       }
@@ -62,15 +62,6 @@ class Container extends Component {
     this.setState({ text: [...this.state.text, textType]});
   }
 
-  showMenu() {
-    const here = this
-    Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} addChildDiv={here.addChildDiv} addChildText={here.addChildText}/>,
-      buttons: {
-        right: ['ok']
-      }
-    })
-  }
 
 ///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
   onDrag(color) {
@@ -78,8 +69,6 @@ class Container extends Component {
     cssModule[this.state.className]["backgroundColor"] = color;
     this.props.updateCssViewer();
   }
-
-
 
   increaseBorderWidth() {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
@@ -94,7 +83,8 @@ class Container extends Component {
   }
 
   changeBorderStyle(style) {
-
+    console.log("change border style has run")
+    console.log(style)
     this.state.style["borderStyle"] = style;
     this.props.updateCssViewer();
   }

@@ -6,24 +6,24 @@ class Dropdown extends Component {
    this.eventHandler = this.eventHandler.bind(this);
  }
 
+ renderOptions (items) {
+   return this.props.items.map (choice => (
+     <option value={choice}>{choice}</option>
+   ))
+ }
+
  render() {
    return (
      <div>
        <select onChange={this.eventHandler}>
-         <option value="solid">Solid</option>
-         <option value="dashed">Dashed</option>
-         <option value="dotted">Dotted</option>
+         {this.renderOptions()}
        </select>
      </div>
    );
  }
 
  eventHandler(event){
-   this.changeBorderStyle(event.target.value);
- }
-
- changeBorderStyle(style) {
-   this.props.changeBorderStyle(style);
+   this.props.eventHandler(event.target.value);
  }
 
 }
