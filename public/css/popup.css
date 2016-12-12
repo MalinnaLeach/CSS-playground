@@ -77,7 +77,8 @@
     }
 
     .mm-popup__box {
-        width: 80%;
+      /*This is the width of the whole pop up*/
+        width: 25%;
         position: absolute;
         top: 10%;
         left: 10%;

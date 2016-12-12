@@ -27,10 +27,9 @@ class Menu extends Component {
         <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
         <button id="increase" onClick={this.increaseBorderWidth}>+</button>
         <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
+        <h3>Select your border style:</h3>
         <Dropdown changeBorderStyle={here.changeBorderStyle}/>
       </div>
-
-
     );
   }
 
@@ -59,8 +58,6 @@ class Menu extends Component {
     this.props.changeBorderStyle(style);
   }
 
-
 }
-
 
 export default Menu;

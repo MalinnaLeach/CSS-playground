@@ -17,25 +17,12 @@ class Container extends Component {
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
   }
 
-  componentDidMount() {
-    this.updateCssModule();
-  };
-
-  updateCssModule() {
-    cssModule[this.state.className] = this.state.style;
-    this.props.updateCssViewer();
-  }
-
-  renderDiv() {
-    return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}}/>
-    ))
-  }
-
-  addChildDiv(className) {
-    cssModule[className] = {}
-    this.setState({ containers: [...this.state.containers, className]});
-    this.props.updateCssViewer()
+  render () {
+    return (
+      <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
+        {this.renderDiv()}
+      </div>
+    );
   }
 
   showMenu() {
@@ -49,6 +36,17 @@ class Container extends Component {
     })
   }
 
+  renderDiv() {
+    return this.state.containers.map(div => (
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}}/>
+    ))
+  }
+
+  addChildDiv(className) {
+    cssModule[className] = {}
+    this.setState({ containers: [...this.state.containers, className]});
+    this.props.updateCssViewer()
+  }
 
 ///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
   onDrag(color) {
@@ -76,14 +74,14 @@ class Container extends Component {
   }
 ///////////////////////////////////////////////////////////////////////
 
-  render () {
-    return (
-      <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
-        {this.renderDiv()}
-      </div>
-    );
+  updateCssModule() {
+    cssModule[this.state.className] = this.state.style;
+    this.props.updateCssViewer();
   }
 
+  componentDidMount() {
+    this.updateCssModule();
+  };
 }
 
 export default Container;

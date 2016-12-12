@@ -3,10 +3,22 @@ import React, { Component } from 'react';
 class Dropdown extends Component {
  constructor() {
    super();
-   this.handleChange = this.eventHandler.bind(this);
+   this.eventHandler = this.eventHandler.bind(this);
    this.state = {
      selectValue:'solid'
    };
+ }
+
+ render() {
+   return (
+     <div>
+       <select value={this.state.selectValue} onChange={this.eventHandler}>
+         <option value="solid">Solid</option>
+         <option value="dashed">Dashed</option>
+         <option value="dotted">Dotted</option>
+       </select>
+     </div>
+   );
  }
 
  eventHandler(event){
@@ -17,17 +29,7 @@ class Dropdown extends Component {
    this.props.changeBorderStyle(style);
  }
 
- render() {
-   return (
-     <div>
-       <select value={this.state.selectValue} onChange={this.handleChange}>
-         <option value="solid">Solid</option>
-         <option value="dashed">Dashed</option>
-         <option value="dotted">Dotted</option>
-       </select>
-     </div>
-   );
- }
+
 }
 
 export default Dropdown;
