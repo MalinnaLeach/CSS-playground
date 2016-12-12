@@ -57,13 +57,13 @@ class Container extends Component {
   increaseBorderWidth() {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
     this.state.style["borderWidth"] = String((thickness + 1)) + "px"
-    this.forceUpdate()
+    this.props.updateCssViewer();
   }
 
   decreaseBorderWidth() {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
     this.state.style["borderWidth"] = String((thickness - 1)) + "px"
-    this.forceUpdate()
+    this.props.updateCssViewer();
   }
 
   render () {
