@@ -11,3 +11,4 @@ Another one on the above theme:  http://www.ctheu.com/2015/02/12/how-to-communic
 React file download: https://www.npmjs.com/package/react-file-download
 HTML special characters: http://www.degraeve.com/reference/specialcharacters.php
 Binding functions in js: http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/
+Microsoft video beginners guide to React: https://mva.microsoft.com/en-us/training-courses/react-the-definitive-beginners-guide-16547?l=txxM6IzfC_9406218965
