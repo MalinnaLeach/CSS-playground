@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color-picker';
 import 'react-color-picker/index.css'
+import Dropdown from '../src/Dropdown';
 
 class Menu extends Component {
   constructor(props) {
@@ -10,10 +11,14 @@ class Menu extends Component {
     this.handleNewDiv = this.handleNewDiv.bind(this)
     this.handleNewTitle = this.handleNewTitle.bind(this)
     this.handleNewParagraph = this.handleNewParagraph.bind(this)
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
+    this.changeBorderStyle = this.changeBorderStyle.bind(this)
     }
 
   render () {
-    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', border: "3px solid black"}
+    const here = this
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
     return (
       <div className="menu">
       <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
@@ -24,6 +29,10 @@ class Menu extends Component {
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
       <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
       <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
+      <button id="increase" onClick={this.increaseBorderWidth}>+</button>
+      <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
+      <h3>Select your border style:</h3>
+      <Dropdown changeBorderStyle={here.changeBorderStyle}/>
       </div>
     );
   }
@@ -49,7 +58,18 @@ class Menu extends Component {
     this.setState({color: color});
   }
 
-}
+  increaseBorderWidth () {
+    this.props.increaseBorderWidth();
+  }
 
+  decreaseBorderWidth () {
+    this.props.decreaseBorderWidth();
+  }
+
+  changeBorderStyle(style) {
+    this.props.changeBorderStyle(style);
+  }
+
+}
 
 export default Menu;

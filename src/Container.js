@@ -5,7 +5,6 @@ import AddText from './AddText'
 import cssModule from './cssModule'
 import '../public/css/Container.css';
 
-
 class Container extends Component {
   constructor(props) {
     super(props);
@@ -15,20 +14,34 @@ class Container extends Component {
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
     this.addChildText = this.addChildText.bind(this);
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
+    this.changeBorderStyle = this.changeBorderStyle.bind(this);
   }
 
-  componentDidMount() {
-    this.updateCssModule();
-  };
+  render () {
+    return (
+      <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
+        {this.renderDiv()}
+        {this.renderText()}
+      </div>
+    );
+  }
 
-  updateCssModule() {
-    cssModule[this.state.className] = this.state.style;
-    this.props.updateCssViewer();
+  showMenu() {
+    const here = this
+    Popup.create({
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
+      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv}/>,
+      buttons: {
+        right: ['ok']
+      }
+    })
   }
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", border: "3px solid #000"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}}/>
     ))
   }
 
@@ -44,6 +57,7 @@ class Container extends Component {
     this.props.updateCssViewer()
   }
 
+
   addChildText(textType) {
     this.setState({ text: [...this.state.text, textType]});
   }
@@ -58,21 +72,42 @@ class Container extends Component {
     })
   }
 
+///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
   onDrag(color) {
     this.state.style["backgroundColor"] = color;
     cssModule[this.state.className]["backgroundColor"] = color;
     this.props.updateCssViewer();
   }
 
-  render () {
-    return (
-      <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
-        {this.renderDiv()}
-        {this.renderText()}
-      </div>
-    );
+
+
+  increaseBorderWidth() {
+    var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
+    this.state.style["borderWidth"] = String((thickness + 1)) + "px"
+    this.props.updateCssViewer();
   }
 
+  decreaseBorderWidth() {
+    var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
+    this.state.style["borderWidth"] = String((thickness - 1)) + "px"
+    this.props.updateCssViewer();
+  }
+
+  changeBorderStyle(style) {
+
+    this.state.style["borderStyle"] = style;
+    this.props.updateCssViewer();
+  }
+///////////////////////////////////////////////////////////////////////
+
+  updateCssModule() {
+    cssModule[this.state.className] = this.state.style;
+    this.props.updateCssViewer();
+  }
+
+  componentDidMount() {
+    this.updateCssModule();
+  };
 }
 
 export default Container;
