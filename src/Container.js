@@ -4,7 +4,6 @@ import Menu from '../src/Menu'
 import cssModule from '../src/cssModule'
 import '../public/css/Container.css';
 
-
 class Container extends Component {
   constructor(props) {
     super(props);
@@ -13,8 +12,9 @@ class Container extends Component {
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
-    this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
-    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
+    this.changeBorderStyle = this.changeBorderStyle.bind(this);
   }
 
   componentDidMount() {
@@ -41,13 +41,16 @@ class Container extends Component {
   showMenu() {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} addChildDiv={here.addChildDiv}/>,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
+      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv}/>,
       buttons: {
         right: ['ok']
       }
     })
   }
 
+
+///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
   onDrag(color) {
     this.state.style["backgroundColor"] = color;
     cssModule[this.state.className]["backgroundColor"] = color;
@@ -65,6 +68,13 @@ class Container extends Component {
     this.state.style["borderWidth"] = String((thickness - 1)) + "px"
     this.props.updateCssViewer();
   }
+
+  changeBorderStyle(style) {
+
+    this.state.style["borderStyle"] = style;
+    this.props.updateCssViewer();
+  }
+///////////////////////////////////////////////////////////////////////
 
   render () {
     return (
