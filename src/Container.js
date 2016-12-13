@@ -88,7 +88,8 @@ class Container extends Component {
   }
 
   addChildImage(url) {
-    console.log(this.state.images)
+    console.log(url)
+    this.state.style["background-image"] = url
     this.setState({images: [...this.state.images, url]});
     this.props.updateCssViewer()
   }
