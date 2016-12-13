@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
-// import TextMenu from "./TextMenu"
+import ImageMenu from "./ImageMenu"
 
 class AddImage extends Component {
   constructor(props) {
     super(props);
-    this.state = {imageUrl: props.imageUrl, height: props.height, width: props.width}
-    // this.renderTextType = this.renderTextType.bind(this)
-    // this.updateText = this.updateText.bind(this)
-    // this.showTextMenu = this.showTextMenu.bind(this)
-    // this.setContent = this.setContent.bind(this)
+    this.state = {imageUrl: props.imageUrl, imageHeight: props.height}
+    this.updateHeight = this.updateHeight.bind(this)
+    this.showImageMenu = this.showImageMenu.bind(this)
+    this.setHeight = this.setHeight.bind(this)
+  }
+
+  setHeight() {
+    return this.state.imageHeight
+  }
+
+  updateHeight(height) {
+    this.setState({imageHeight: height})
+  }
+
+
+  showImageMenu (e) {
+    const here = this
+    Popup.create({
+      content: <ImageMenu updateHeight={here.updateHeight} height={here.setHeight()}/>,
+      buttons: {right:['ok']}
+    })
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
   }
 
 
   render () {
     return (
-      <div className="AddImage" onClick={this.showTextMenu}>
-        <img src={this.state.imageUrl} height={this.state.height} width={this.state.width} />
+      <div className="AddImage" onClick={this.showImageMenu}>
+        <img src={this.state.imageUrl} height={this.state.imageHeight} />
       </div>
     )
   }
