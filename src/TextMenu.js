@@ -15,7 +15,6 @@ class TextMenu extends Component {
   }
 
   handleFontSize(e) {
-    this.setState({fontSize: e});
     this.props.changeFontSize(e.target.value);
   }
 
