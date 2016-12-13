@@ -22,7 +22,6 @@ class Container extends Component {
     this.updateDivWidth = this.updateDivWidth.bind(this);
     this.updateDivHeight = this.updateDivHeight.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
-    this.changeRelative = this.changeRelative.bind(this);
     this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
     this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
     this.increaseRightMargin = this.increaseRightMargin.bind(this);
@@ -48,7 +47,8 @@ class Container extends Component {
       content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
       decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
+      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin}
+
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
@@ -124,20 +124,8 @@ class Container extends Component {
   }
 
   changeAlignment(alignment) {
-    this.state.style["float"] = alignment
-    this.props.updateCssViewer();
-  }
-
-  changeRelative(position) {
-    if (position === "isolated") {
-      this.state.style["float"] = "none"
-      this.state.style["display"] = "block"
+      this.state.style["float"] = alignment
       this.props.updateCssViewer();
-    } else {
-      this.state.style["float"] = "left"
-      this.state.style["display"] = "inline"
-      this.props.updateCssViewer();
-    }
   }
 
   increaseLeftMargin() {
