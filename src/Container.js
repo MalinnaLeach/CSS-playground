@@ -18,6 +18,7 @@ class Container extends Component {
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
+    this.changeBorderRadius = this.changeBorderRadius.bind(this);
     this.updateDivWidth = this.updateDivWidth.bind(this);
     this.updateDivHeight = this.updateDivHeight.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
@@ -43,10 +44,11 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
+      content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
       decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
+      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
       addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin}
+
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
@@ -61,7 +63,7 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
@@ -103,6 +105,11 @@ class Container extends Component {
 
   changeBorderStyle(style) {
     this.state.style["borderStyle"] = style;
+    this.props.updateCssViewer();
+  }
+
+  changeBorderRadius(radius) {
+    this.state.style["borderRadius"] = String(radius) + "%";
     this.props.updateCssViewer();
   }
 

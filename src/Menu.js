@@ -14,25 +14,36 @@ class Menu extends Component {
     this.handleNewParagraph = this.handleNewParagraph.bind(this);
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
+    this.setBorderRadius = this.setBorderRadius.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
   }
 
   render () {
     var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
-    return (
-      <div className="menu">
-      <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
-      <div style={colourBoxStyle}>
-        {this.state.color}
-      </div>
-      <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+
+    if (this.props.parentContainer === "background") {
+      return (
+        <div className="menu">
+          <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
+          <div style={colourBoxStyle}>
+            {this.state.color}
+          </div>
+          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+          <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+        </div>
+      )
+    } else {
+      return (
+        <div className="menu">
+          <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
+          <div style={colourBoxStyle}>
+            {this.state.color}
+          </div>
+          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-
       <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
-
       <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
-
       <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
       <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
       <h3>Change border width:</h3>
@@ -46,7 +57,8 @@ class Menu extends Component {
       increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
       increaseBottomMargin={this.props.increaseBottomMargin} decreaseBottomMargin = {this.props.decreaseBottomMargin} />
       </div>
-    );
+      );
+    }
   }
 
 
@@ -77,6 +89,10 @@ class Menu extends Component {
 
   decreaseBorderWidth () {
     this.props.decreaseBorderWidth();
+  }
+
+  setBorderRadius(e) {
+    this.props.changeBorderRadius(e.target.value);
   }
 
   setDivWidth(e) {
