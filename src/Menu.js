@@ -15,7 +15,7 @@ class Menu extends Component {
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
-    }
+  }
 
   render () {
     var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
@@ -27,13 +27,11 @@ class Menu extends Component {
       </div>
       <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-      <form>
-        Width:
-        <input type="text" name="width" />
-        Height:
-        <input type="text" name="height" />
-        <input type="submit" value="Update size" />
-      </form>
+
+      <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
+
+      <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
+
       <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
       <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
       <h3>Change border width:</h3>
@@ -77,14 +75,13 @@ class Menu extends Component {
     this.props.decreaseBorderWidth();
   }
 
-  setDivWidth(width) {
-    this.props.setDivWidth(width);
+  setDivWidth(e) {
+    this.props.updateDivWidth(e.target.value);
   }
 
-  setDivHeight(height) {
-    this.props.setDivHeight(height);
+  setDivHeight(e) {
+    this.props.updateDivHeight(e.target.value);
   }
-
 
 }
 
