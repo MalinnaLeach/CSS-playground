@@ -18,6 +18,7 @@ class Container extends Component {
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
+    this.changeAlignment = this.changeAlignment.bind(this);
   }
 
   render () {
@@ -31,14 +32,14 @@ class Container extends Component {
 
   showMenu(e) {
     const here = this
-      Popup.create({
-        content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
-        changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv} addChildText={here.addChildText} />,
-        buttons: {right:['ok']}
-      })
-      if (!e) var e = window.event;
-      e.cancelBubble = true;
-      if (e.stopPropagation) e.stopPropagation();
+    Popup.create({
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText} />,
+      buttons: {right:['ok']}
+    })
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
   }
 
   renderDiv() {
@@ -86,6 +87,11 @@ class Container extends Component {
 
   changeBorderStyle(style) {
     this.state.style["borderStyle"] = style;
+    this.props.updateCssViewer();
+  }
+
+  changeAlignment(alignment) {
+    this.state.style["float"] = alignment
     this.props.updateCssViewer();
   }
 ///////////////////////////////////////////////////////////////////////
