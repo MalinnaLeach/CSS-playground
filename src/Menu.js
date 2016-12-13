@@ -18,6 +18,7 @@ class Menu extends Component {
     }
 
   render () {
+
     var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
     return (
       <div className="menu">
@@ -84,6 +85,52 @@ class Menu extends Component {
   setDivHeight(height) {
     this.props.setDivHeight(height);
   }
+
+  //////////////////////////DRAG FUNCTIONS//////////////////
+  handleDrag(e, ui) {
+    const {x, y} = this.state.deltaPosition;
+    this.setState({
+      deltaPosition: {
+        x: x + ui.deltaX,
+        y: y + ui.deltaY,
+      }
+    });
+  }
+
+  onStart() {
+    this.setState({activeDrags: ++this.state.activeDrags});
+  }
+
+  onStop() {
+    this.setState({activeDrags: --this.state.activeDrags});
+  }
+
+  // For controlled component
+  adjustXPos(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const {x, y} = this.state.controlledPosition;
+    this.setState({controlledPosition: {x: x - 10, y}});
+  }
+
+  adjustYPos(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const {controlledPosition} = this.state;
+    const {x, y} = this.state.controlledPosition;
+    this.setState({controlledPosition: {x, y: y - 10}});
+  }
+
+  onControlledDrag(e, position) {
+    const {x, y} = position;
+    this.setState({controlledPosition: {x, y}});
+  }
+
+  onControlledDragStop(e, position) {
+    const {x, y} = position;
+    this.setState({controlledPosition: {x, y}});
+  }
+  //////////////////////////////////////////////////////////
 
 
 }

@@ -10,7 +10,8 @@ import Draggable from 'react-draggable';
 class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = {className: this.props.className, style: this.props.style, containers: [], text: [] }
+    this.state = {className: this.props.className, style: this.props.style, containers: [], text: [], activeDrags: 0, deltaPosition: {x: 0, y: 0},
+    controlledPosition: {x: -400, y: 200}}
     this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
@@ -37,11 +38,23 @@ class Container extends Component {
 
   showMenu(e) {
     const here = this
+    const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+    const deltaPosition = this.state.deltaPosition;
+    const controlledPosition = this.state.controlledPosition;
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
+      content:
+      <Draggable handle="strong" {...dragHandlers}>
+      <span>
+      <div className="box no-cursor">
+        <strong className="cursor"><div>Drag here</div></strong>
+      </div>
+      <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
       decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} />,
+      addChildText={here.addChildText} />
+      </span>
+      </Draggable>,
+
       buttons: {
         right: ['ok']
       }
@@ -121,6 +134,8 @@ class Container extends Component {
 
   componentDidMount() {
     this.updateCssModule();
+
+
 
   };
 }
