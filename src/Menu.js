@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color-picker';
 import 'react-color-picker/index.css'
-import Dropdown from '../src/Dropdown';
+import Dropdown from './Dropdown';
+import Positioning from './Positioning'
 
 class Menu extends Component {
   constructor(props) {
@@ -39,8 +40,11 @@ class Menu extends Component {
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       <h3>Select your border style:</h3>
       <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
-      <h3>Container alignment:</h3>
-      <Dropdown items={["left", "right", "center"]} eventHandler={this.props.changeAlignment}/>
+      <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
+      increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
+      increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
+      increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
+      increaseBottomMargin={this.props.increaseBottomMargin} decreaseBottomMargin = {this.props.decreaseBottomMargin} />
       </div>
     );
   }
