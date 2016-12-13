@@ -21,6 +21,7 @@ class AddText extends Component {
     this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
     this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
     this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
+    this.changeFontSize = this.changeFontSize.bind(this);
   }
 
   changeAlignment(alignment) {
@@ -29,6 +30,11 @@ class AddText extends Component {
     } else {
       this.state.style["float"] = alignment
     }
+    this.props.updateCssViewer();
+  }
+
+  changeFontSize(size) {
+    this.state.style["fontSize"] = size + "px"
     this.props.updateCssViewer();
   }
 
@@ -148,10 +154,10 @@ class AddText extends Component {
   showTextMenu (e) {
     const here = this
     Popup.create({
-      content: <TextMenu updateText={here.updateText} content={here.setContent()} changeAlignment={here.changeAlignment} increaseLeftMargin={here.increaseLeftMargin}
+      content: <TextMenu updateText={here.updateText} content={here.setContent()} fontSize={here.state.style.fontSize} changeAlignment={here.changeAlignment} increaseLeftMargin={here.increaseLeftMargin}
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} />,
+      decreaseBottomMargin={here.decreaseBottomMargin} changeFontSize={here.changeFontSize}/>,
       buttons: {right:['ok']}
     })
     if (!e) var e = window.event;
