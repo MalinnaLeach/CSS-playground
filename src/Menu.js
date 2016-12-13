@@ -7,12 +7,14 @@ class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {color: 'white', className: ''};
-    this.handleClassName = this.handleClassName.bind(this)
-    this.handleNewDiv = this.handleNewDiv.bind(this)
-    this.handleNewTitle = this.handleNewTitle.bind(this)
-    this.handleNewParagraph = this.handleNewParagraph.bind(this)
-    this.increaseBorderWidth = this.increaseBorderWidth.bind(this)
-    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this)
+    this.handleClassName = this.handleClassName.bind(this);
+    this.handleNewDiv = this.handleNewDiv.bind(this);
+    this.handleNewTitle = this.handleNewTitle.bind(this);
+    this.handleNewParagraph = this.handleNewParagraph.bind(this);
+    this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
+    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
+    this.setDivWidth = this.setDivWidth.bind(this);
+    this.setDivHeight = this.setDivHeight.bind(this);
     }
 
   render () {
@@ -25,8 +27,16 @@ class Menu extends Component {
       </div>
       <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+      <form>
+        Width:
+        <input type="text" name="width" />
+        Height:
+        <input type="text" name="height" />
+        <input type="submit" value="Update size" />
+      </form>
       <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
       <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
+      <h3>Change border width:</h3>
       <button id="increase" onClick={this.increaseBorderWidth}>+</button>
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       <h3>Select your border style:</h3>
@@ -66,6 +76,15 @@ class Menu extends Component {
   decreaseBorderWidth () {
     this.props.decreaseBorderWidth();
   }
+
+  setDivWidth(width) {
+    this.props.setDivWidth(width);
+  }
+
+  setDivHeight(height) {
+    this.props.setDivHeight(height);
+  }
+
 
 }
 
