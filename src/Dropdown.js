@@ -8,7 +8,7 @@ class Dropdown extends Component {
 
  renderOptions (items) {
    return this.props.items.map (choice => (
-     <option value={choice}>{choice}</option>
+     <option key={choice} value={choice}>{choice}</option>
    ))
  }
 

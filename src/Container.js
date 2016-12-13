@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import Menu from './Menu'
 import AddText from './AddText'
@@ -28,15 +29,16 @@ class Container extends Component {
     );
   }
 
-  showMenu() {
+  showMenu(e) {
     const here = this
-    Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
-      changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv} addChildText={here.addChildText} />,
-      buttons: {
-        right: ['ok']
-      }
-    })
+      Popup.create({
+        content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth}
+        changeBorderStyle={here.changeBorderStyle} addChildDiv={here.addChildDiv} addChildText={here.addChildText} />,
+        buttons: {right:['ok']}
+      })
+      if (!e) var e = window.event;
+      e.cancelBubble = true;
+      if (e.stopPropagation) e.stopPropagation();
   }
 
   renderDiv() {
@@ -83,8 +85,6 @@ class Container extends Component {
   }
 
   changeBorderStyle(style) {
-    console.log("change border style has run")
-    console.log(style)
     this.state.style["borderStyle"] = style;
     this.props.updateCssViewer();
   }
@@ -97,6 +97,7 @@ class Container extends Component {
 
   componentDidMount() {
     this.updateCssModule();
+
   };
 }
 
