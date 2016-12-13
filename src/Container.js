@@ -63,13 +63,13 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", borderRadius: "0px"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
   renderText() {
     return this.state.text.map((text, index) => (
-      <AddText key={index} textType={text} />
+      <AddText key={index} className={"text"+String(index)} textType={text} updateCssViewer={this.props.updateCssViewer}/>
     ))
   }
 
@@ -124,8 +124,12 @@ class Container extends Component {
   }
 
   changeAlignment(alignment) {
+    if (alignment === "centre") {
+      delete this.state.style.float
+    } else {
       this.state.style["float"] = alignment
-      this.props.updateCssViewer();
+    }
+    this.props.updateCssViewer();
   }
 
   increaseLeftMargin() {

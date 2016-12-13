@@ -11,7 +11,7 @@ class Positioning extends Component {
     return (
       <div className="Positioning">
         <h3>Container alignment:</h3>
-        <Dropdown items={["left", "right"]} eventHandler={this.props.changeAlignment} />
+        <Dropdown items={["centre", "left", "right"]} eventHandler={this.props.changeAlignment} />
         <h3>Adjust space to the left:</h3>
         <button id="+lm" onClick={this.props.increaseLeftMargin}>+</button>
         <button id="-lm" onClick={this.props.decreaseLeftMargin}>-</button>
