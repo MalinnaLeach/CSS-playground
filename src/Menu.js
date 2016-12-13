@@ -40,7 +40,7 @@ class Menu extends Component {
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
       <h3>Select your border style:</h3>
       <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
-      <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
+      <Positioning changeAlignment={this.props.changeAlignment}
       increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
       increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
       increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
