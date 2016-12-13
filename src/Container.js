@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import Menu from './Menu'
 import AddText from './AddText'
@@ -31,7 +32,7 @@ class Container extends Component {
     );
   }
 
-  showMenu() {
+  showMenu(e) {
     const here = this
     Popup.create({
       content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
@@ -42,6 +43,9 @@ class Container extends Component {
         right: ['ok']
       }
     })
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
   }
 
   renderDiv() {
@@ -100,7 +104,7 @@ class Container extends Component {
     this.state.style["height"] = height;
     this.props.updateCssViewer();
   }
-    
+
   changeAlignment(alignment) {
     this.state.style["float"] = alignment
     this.props.updateCssViewer();
@@ -114,6 +118,7 @@ class Container extends Component {
 
   componentDidMount() {
     this.updateCssModule();
+
   };
 }
 
