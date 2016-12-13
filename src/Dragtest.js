@@ -21,11 +21,12 @@ render() {
       const {deltaPosition, controlledPosition} = this.state;
       return (
       <Draggable handle="strong" {...dragHandlers}>
-            <div className="box no-cursor">
-              <strong className="cursor"><div>Drag here</div></strong>
-              <div>You must click my handle to drag me</div>
-            </div>
-          </Draggable>
+        <div className="box no-cursor">
+          <strong className="cursor"><div>Drag here</div></strong>
+          <div>You must click my handle to drag me</div>
+        </div>
+
+      </Draggable>
         );
       }
 

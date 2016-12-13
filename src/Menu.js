@@ -6,7 +6,9 @@ import Dropdown from '../src/Dropdown';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {color: 'white', className: ''};
+    this.state = {color: 'white', className: '', activeDrags: 0,
+    deltaPosition: {x: 0, y: 0},
+    controlledPosition: {x: -400, y: 200}};
     this.handleClassName = this.handleClassName.bind(this);
     this.handleNewDiv = this.handleNewDiv.bind(this);
     this.handleNewTitle = this.handleNewTitle.bind(this);
@@ -15,6 +17,13 @@ class Menu extends Component {
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.onStart = this.onStart.bind(this);
+    this.onStop = this.onStop.bind(this);
+    this.adjustXPos = this.adjustXPos.bind(this);
+    this.adjustYPos = this.adjustYPos.bind(this);
+    this.onControlledDrag = this.onControlledDrag.bind(this);
+    this.onControlledDragStop = this.onControlledDragStop.bind(this);
     }
 
   render () {
