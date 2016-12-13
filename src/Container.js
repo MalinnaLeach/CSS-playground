@@ -5,6 +5,7 @@ import Menu from './Menu'
 import AddText from './AddText'
 import cssModule from './cssModule'
 import '../public/css/Container.css';
+import Draggable from 'react-draggable';
 
 class Container extends Component {
   constructor(props) {
@@ -25,10 +26,12 @@ class Container extends Component {
 
   render () {
     return (
+
       <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
         {this.renderDiv()}
         {this.renderText()}
       </div>
+
     );
   }
 
