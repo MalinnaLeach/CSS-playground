@@ -6,7 +6,7 @@ import Popup from 'react-popup';
 class AddImage extends Component {
   constructor(props) {
     super(props);
-    this.state = {imageUrl: props.imageUrl}
+    this.state = {imageUrl: props.imageUrl, height: props.height, width: props.width}
     // this.renderTextType = this.renderTextType.bind(this)
     // this.updateText = this.updateText.bind(this)
     // this.showTextMenu = this.showTextMenu.bind(this)
@@ -17,7 +17,7 @@ class AddImage extends Component {
   render () {
     return (
       <div className="AddImage" onClick={this.showTextMenu}>
-        <img src={this.state.imageUrl} />
+        <img src={this.state.imageUrl} height={this.state.height} width={this.state.width} />
       </div>
     )
   }
