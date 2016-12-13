@@ -19,6 +19,7 @@ class Container extends Component {
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
     this.changeBorderRadius = this.changeBorderRadius.bind(this);
+    this.changeBorderColor = this.changeBorderColor.bind(this);
     this.updateDivWidth = this.updateDivWidth.bind(this);
     this.updateDivHeight = this.updateDivHeight.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
@@ -46,10 +47,8 @@ class Container extends Component {
     Popup.create({
       content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
       decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin}
-
-      decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
+      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
+      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
       buttons: {
@@ -110,6 +109,18 @@ class Container extends Component {
 
   changeBorderRadius(radius) {
     this.state.style["borderRadius"] = String(radius) + "%";
+    this.props.updateCssViewer();
+  }
+
+  changeBorderColor(color) {
+    if (color == "Light grey") {
+      color = "#D0D0D0"
+    } else if (color == "Dark grey") {
+      color = "#808080"
+    } else if (color == "Black") {
+      color = "#000"
+    }
+    this.state.style["borderColor"] = color;
     this.props.updateCssViewer();
   }
 

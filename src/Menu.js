@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color-picker';
-import 'react-color-picker/index.css'
+import 'react-color-picker/index.css';
 import Dropdown from './Dropdown';
-import Positioning from './Positioning'
+import Positioning from './Positioning';
 
 class Menu extends Component {
   constructor(props) {
@@ -52,6 +52,8 @@ class Menu extends Component {
           <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
           <h3>Change border radius:</h3>
           <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
+          <h3>Change border color:</h3>
+          <Dropdown items={["Black", "Dark grey", "Light grey"]} eventHandler={this.props.changeBorderColor}/>
           <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
           increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
           increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
