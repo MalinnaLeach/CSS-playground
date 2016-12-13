@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
-import Menu from './Menu'
-import AddText from './AddText'
-import cssModule from './cssModule'
+import Menu from './Menu';
+import AddText from './AddText';
+import cssModule from './cssModule';
+import htmlModule from './htmlModule';
 import '../public/css/Container.css';
 
 class Container extends Component {
@@ -74,6 +75,8 @@ class Container extends Component {
 
   addChildDiv(className) {
     cssModule[className] = {}
+    htmlModule.push({class: className, type: "div"})
+
     this.setState({ containers: [...this.state.containers, className]});
     this.props.updateCssViewer()
   }

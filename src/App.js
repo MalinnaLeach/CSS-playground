@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Container from './Container';
 import CSSViewer from './CSSViewer';
+import HTMLViewer from './HTMLViewer';
 import '../public/css/App.css';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
     <div className="App">
       <Header />
       <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
-      <CSSViewer />
+      <HTMLViewer />
     </div>
     );
   };
