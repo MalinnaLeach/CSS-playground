@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import Menu from './Menu'
 import AddText from './AddText'
+import AddImage from './AddImage'
 import cssModule from './cssModule'
 import '../public/css/Container.css';
 
