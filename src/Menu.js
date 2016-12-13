@@ -14,6 +14,7 @@ class Menu extends Component {
     this.handleNewParagraph = this.handleNewParagraph.bind(this);
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
+    this.setBorderRadius = this.setBorderRadius.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
   }
@@ -28,18 +29,17 @@ class Menu extends Component {
       </div>
       <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
       <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-
       <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
-
       <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
-
       <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
       <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
       <h3>Change border width:</h3>
       <button id="increase" onClick={this.increaseBorderWidth}>+</button>
       <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
-      <h3>Select your border style:</h3>
+      <h3>Change border style:</h3>
       <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+      <h3>Change border radius:</h3>
+      <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
       <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
       increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
       increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
@@ -77,6 +77,10 @@ class Menu extends Component {
 
   decreaseBorderWidth () {
     this.props.decreaseBorderWidth();
+  }
+
+  setBorderRadius(e) {
+    this.props.changeBorderRadius(e.target.value);
   }
 
   setDivWidth(e) {
