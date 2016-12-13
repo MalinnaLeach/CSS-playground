@@ -11,11 +11,12 @@ class App extends Component {
     this.updateCssViewer = this.updateCssViewer.bind(this);
   }
 
+
   render () {
   return (
     <div className="App">
       <Header />
-      <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh"}} updateCssViewer={this.updateCssViewer}/>
+      <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
       <CSSViewer />
     </div>
     );
