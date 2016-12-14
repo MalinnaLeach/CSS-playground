@@ -1,6 +1,11 @@
 .htmlViewer{
-  float: right;
+  float: left;
   height: 100vh;
-  width: 25%;
-  text-align: left;
+  overflow: scroll;
+  width: 20%;
+  margin-right: 20px;
+  margin-left: 5px;
+  border-width: 6px 6px 6px 5px;
+  border-color: #ccc;
+  border-style: solid;
 }
