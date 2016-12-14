@@ -22,7 +22,7 @@ class Menu extends Component {
   }
 
   render () {
-    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"};
     if (this.props.parentContainer === "background") {
       return (
         <div className="menu">

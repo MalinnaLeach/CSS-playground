@@ -50,14 +50,13 @@ class Container extends Component {
     Popup.create({
       title: "You are working on: " + this.state.className,
       content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
-      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} 
+      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
       increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText} 
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
       addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
-       />,
       buttons: {
         right: ['ok']
       }
