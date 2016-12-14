@@ -16,6 +16,7 @@ class CSSViewer extends Component {
   render () {
     return (
       <div className="CSSViewer">
+        <h1 className="header">Your CSS:</h1>
         {this.csstext()}
       </div>
     );
