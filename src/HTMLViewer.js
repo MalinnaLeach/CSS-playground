@@ -3,8 +3,8 @@ import '../public/css/HTMLViewer.css';
 import htmlModule from './htmlModule';
 import HTMLTranslator from './HTMLTranslator';
 
-class HTMLViewer extends Component {
 
+class HTMLViewer extends Component {
 
   render () {
     return (
@@ -15,7 +15,7 @@ class HTMLViewer extends Component {
       <p> &nbsp;&nbsp; &nbsp;&nbsp; &#60;meta charset="utf-8"&#62;</p>
       <p> &nbsp;&nbsp; &nbsp;&nbsp; &#60;title&#62;&#60;/title&#62;</p>
       <p> &nbsp;&nbsp; &#60;/head&#62;</p>
-      <p> &nbsp;&nbsp; &#60;body&#62;</p>
+      <p> &nbsp;&nbsp; &#60;body class=background&#62;</p>
       <HTMLTranslator/>
       <p> &nbsp;&nbsp; &#60;/body&#62;</p>
       <p> &#60;/html&#62;</p>

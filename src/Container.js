@@ -63,7 +63,7 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
@@ -73,10 +73,19 @@ class Container extends Component {
     ))
   }
 
+  htmlUpdate(array, parent, name) {
+    for (var object of array) {
+      if (object.class === parent) {
+        object.children.push({class: name, type: "div", children: []})
+      } else if (object.children !== []) {
+        this.htmlUpdate(object.children, parent, name)
+      }
+    }
+  }
+
   addChildDiv(className) {
     cssModule[className] = {}
-    htmlModule.push({class: className, type: "div"})
-
+    this.htmlUpdate(htmlModule, this.props.className, className)
     this.setState({ containers: [...this.state.containers, className]});
     this.props.updateCssViewer()
   }

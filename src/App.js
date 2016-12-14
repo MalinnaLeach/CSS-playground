@@ -3,6 +3,7 @@ import Header from './Header';
 import Container from './Container';
 import CSSViewer from './CSSViewer';
 import HTMLViewer from './HTMLViewer';
+import htmlModule from './htmlModule';
 import '../public/css/App.css';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
   return (
     <div className="App">
       <Header />
-      <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
+      <Container key="background" className="background" htmlRef={htmlModule[0]} style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
       <HTMLViewer />
     </div>
     );
