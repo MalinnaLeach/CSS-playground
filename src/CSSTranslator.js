@@ -20,11 +20,11 @@ class CSSTranslator extends Component {
  render () {
    return (
      <div className="cssCode" style={{textAlign: "left",
-   margin: 10}}>
-   <p>.{this.props.name} &nbsp;&#123;</p>
-   {this.cssLine(cssModule[this.props.name])}
-   <p> &#125; </p>
-   </div>
+       margin: 10}}>
+       <p>.{this.props.name} &nbsp;&#123;</p>
+       {this.cssLine(cssModule[this.props.name])}
+       <p> &#125; </p>
+     </div>
  )}
 }
 
