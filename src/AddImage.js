@@ -36,7 +36,7 @@ class AddImage extends Component {
   render () {
     return (
       <div className="AddImage" onClick={this.showImageMenu}>
-        <img src={this.state.imageUrl} height={this.state.imageHeight} />
+        <img src={this.state.imageUrl} height={this.state.imageHeight} className=""/>
       </div>
     )
   }
