@@ -20,10 +20,11 @@ class Container extends Component {
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
+    this.changeBorderRadius = this.changeBorderRadius.bind(this);
+    this.changeBorderColor = this.changeBorderColor.bind(this);
     this.updateDivWidth = this.updateDivWidth.bind(this);
     this.updateDivHeight = this.updateDivHeight.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
-    this.changeRelative = this.changeRelative.bind(this);
     this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
     this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
     this.increaseRightMargin = this.increaseRightMargin.bind(this);
@@ -47,13 +48,16 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
-      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
-      decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
+      title: "You are working on: " + this.state.className,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
+      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} 
+      increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText} 
+      addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
+       />,
       buttons: {
         right: ['ok']
       }
@@ -65,7 +69,7 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", float: "left", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
@@ -77,7 +81,7 @@ class Container extends Component {
 
   renderText() {
     return this.state.text.map((text, index) => (
-      <AddText key={index} textType={text} />
+      <AddText key={index} className={"text"+String(index)} textType={text} updateCssViewer={this.props.updateCssViewer}/>
     ))
   }
 
@@ -123,6 +127,25 @@ class Container extends Component {
     this.props.updateCssViewer();
   }
 
+  changeBorderRadius(radius) {
+    this.state.style["borderRadius"] = String(radius) + "%";
+    this.props.updateCssViewer();
+  }
+
+  changeBorderColor(color) {
+    if (color == "Transparent") {
+      color = "transparent"
+    } else if (color == "Light grey") {
+      color = "#D0D0D0"
+    } else if (color == "Dark grey") {
+      color = "#808080"
+    } else if (color == "Black") {
+      color = "#000"
+    }
+    this.state.style["borderColor"] = color;
+    this.props.updateCssViewer();
+  }
+
   updateDivWidth (width) {
     this.state.style["width"] = String(width) + "%";
     this.props.updateCssViewer();
@@ -134,20 +157,12 @@ class Container extends Component {
   }
 
   changeAlignment(alignment) {
-    this.state.style["float"] = alignment
-    this.props.updateCssViewer();
-  }
-
-  changeRelative(position) {
-    if (position === "isolated") {
-      this.state.style["float"] = "none"
-      this.state.style["display"] = "block"
-      this.props.updateCssViewer();
+    if (alignment === "centre") {
+      delete this.state.style.float
     } else {
-      this.state.style["float"] = "left"
-      this.state.style["display"] = "inline"
-      this.props.updateCssViewer();
+      this.state.style["float"] = alignment
     }
+    this.props.updateCssViewer();
   }
 
   increaseLeftMargin() {
