@@ -6,25 +6,33 @@ class HTMLTranslator extends Component {
     super(props);
   }
 
-  htmlOpen(element) {
-  return (
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&#60;{element.type}&nbsp;class={element.class}&#62;</p>
-  )
+  htmlOpen(element, indent) {
+    return <p>{this.indentGenerator(indent)}&#60;{element.type}&nbsp;class={element.class}&#62;</p>
   }
 
-  htmlClose(element) {
+  htmlClose(element, indent) {
     return (
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;&#60;&#47;{element.type}&#62;</p>
+      <p>{this.indentGenerator(indent)}&#60;&#47;{element.type}&#62;</p>
     )
   }
 
-  renderHTML(array, results = []) {
+  indentGenerator(indent) {
+    var indents = [];
+    for (var i=1; i<=indent+4; i++) {
+      indents.push(<span>&nbsp;</span>)
+    }
+    return indents
+  }
+
+
+  renderHTML(array, results = [], indent=0) {
+    indent += 2
     for (var element of array) {
-      results.push(this.htmlOpen(element))
+      results.push(this.htmlOpen(element, indent))
       if (element.children !== []) {
-        this.renderHTML(element.children, results)
+        this.renderHTML(element.children, results, indent)
       }
-      results.push(this.htmlClose(element))
+      results.push(this.htmlClose(element, indent))
     }
     return results
   }
