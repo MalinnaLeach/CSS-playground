@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import fileDownload from 'react-file-download';
 import CSStoFile from './CSStoFile';
 import CSSViewer from './CSSViewer';
-import HTMLViewer from './HTMLViewer';
+// import HTMLViewer from './HTMLViewer';
 import CSSTranslator from './CSSTranslator';
 
 class Header extends Component {
