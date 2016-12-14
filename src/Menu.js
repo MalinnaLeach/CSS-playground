@@ -7,11 +7,13 @@ import Positioning from './Positioning';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {color: 'white', className: ''};
+    this.state = {color: 'white', className: '', imageUrl: ''};
     this.handleClassName = this.handleClassName.bind(this);
     this.handleNewDiv = this.handleNewDiv.bind(this);
     this.handleNewTitle = this.handleNewTitle.bind(this);
     this.handleNewParagraph = this.handleNewParagraph.bind(this);
+    this.handleNewImage = this.handleNewImage.bind(this);
+    this.handleImageUrl = this.handleImageUrl.bind(this);
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.setBorderRadius = this.setBorderRadius.bind(this);
@@ -20,8 +22,7 @@ class Menu extends Component {
   }
 
   render () {
-    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
-
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"
     if (this.props.parentContainer === "background") {
       return (
         <div className="menu">
@@ -40,6 +41,8 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
+          <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
+          <button id="newDiv" onClick={this.handleNewImage}>Insert image</button>
           <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
           <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
           <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
@@ -65,6 +68,13 @@ class Menu extends Component {
     }
   }
 
+  handleNewImage() {
+    this.props.addChildImage(this.state.imageUrl)
+  }
+
+  handleImageUrl(e) {
+    this.setState({imageUrl: e.target.value});
+  }
 
   handleNewTitle() {
     this.props.addChildText("h1");
