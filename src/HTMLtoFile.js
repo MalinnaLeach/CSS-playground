@@ -23,8 +23,16 @@ const moduleLoop = (array, results=[], indent="  ") => {
       results.push(indent)
       results.push("<" + element.type + " class=\"" + element.class + "\">")
       results.push(element.content)
-      results.push("<" + element.type + " class=\"" + element.class + "\">\n")
-    } else {
+      results.push("</" + element.type + ">\n")
+    } else if (!!element.src) {
+      results.push(indent)
+      results.push("<" + element.type + " class=\"" + element.class + "\" src=\"" + element.src + "\" />\n")
+    }
+
+
+
+
+    else {
       results.push(indent)
       results.push("<" + element.type + " class=\"" + element.class + "\">\n")
       if (element.children !== []) {
