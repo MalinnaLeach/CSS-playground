@@ -113,7 +113,9 @@ class Container extends Component {
   }
 
   changeBorderColor(color) {
-    if (color == "Light grey") {
+    if (color == "Transparent") {
+      color = "transparent"
+    } else if (color == "Light grey") {
       color = "#D0D0D0"
     } else if (color == "Dark grey") {
       color = "#808080"

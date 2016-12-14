@@ -54,7 +54,7 @@ class Menu extends Component {
           <h3>Change border radius:</h3>
           <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
           <h3>Change border color:</h3>
-          <Dropdown items={["Black", "Dark grey", "Light grey"]} eventHandler={this.props.changeBorderColor}/>
+          <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
           <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
           increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
           increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
