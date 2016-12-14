@@ -8,7 +8,7 @@ class HTMLViewer extends Component {
 
   render () {
     return (
-      <div className="HTMLViewer" style={{textAlign: "left"}}>
+      <div className="htmlViewer" style={{textAlign: "left"}}>
       <h1 className="header">Your HTML:</h1>
       <p> &#60;&#33;DOCTYPE html&#62;</p>
       <p> &#60;html&#62;</p>

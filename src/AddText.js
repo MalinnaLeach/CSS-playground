@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import TextMenu from "./TextMenu"
 import cssModule from './cssModule'
+import htmlModule from './htmlModule'
 
 class AddText extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class AddText extends Component {
     this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
     this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
     this.changeFontSize = this.changeFontSize.bind(this);
+    this.htmlUpdateContent = this.htmlUpdateContent.bind(this);
   }
 
   changeAlignment(alignment) {
@@ -126,11 +128,6 @@ class AddText extends Component {
     }
   }
 
-  componentDidMount () {
-    cssModule[this.props.className] = {float: "left"}
-    this.props.updateCssViewer()
-  }
-
   renderTextType () {
     if (this.props.textType === "h1") {
       return <h1 className={this.props.className} style={this.state.style}> {this.state.content} </h1>
@@ -141,7 +138,9 @@ class AddText extends Component {
 
   updateText (text) {
     this.setState({ content: text })
-  }
+    this.htmlUpdateContent(htmlModule[0].children, text)
+    this.props.updateCssViewer();
+    }
 
   setContent() {
     if (this.state.content === "Click here to edit text") {
@@ -173,13 +172,36 @@ class AddText extends Component {
     )
   }
 
+  htmlUpdate(array, parent, name) {
+    for (var object of array) {
+      if (object.class === parent) {
+        object.children.push({class: name, type: this.props.textType, content: this.state.content, children: []})
+      } else if (object.children !== []) {
+        this.htmlUpdate(object.children, parent, name)
+      }
+    }
+  }
+
+  htmlUpdateContent(array, text) {
+    for (var object of array) {
+      if (object.class === this.props.className) {
+        object.content = text
+      } else {
+        if (object.children !== []) {
+          this.htmlUpdateContent(object.children, text)
+        }
+      }
+    }
+  }
+
   updateCssModule() {
     cssModule[this.props.className] = this.state.style;
-    this.props.updateCssViewer();
   }
 
   componentDidMount() {
     this.updateCssModule();
+    this.htmlUpdate(htmlModule[0].children, this.props.parent, this.props.className)
+    this.props.updateCssViewer();
   };
 
 }

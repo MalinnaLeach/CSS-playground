@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../public/css/Header.css';
 import fileDownload from 'react-file-download';
 import CSStoFile from './CSStoFile';
 import HTMLtoFile from './HTMLtoFile';

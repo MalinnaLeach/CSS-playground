@@ -16,6 +16,12 @@ class HTMLTranslator extends Component {
     )
   }
 
+  htmlText(element, indent) {
+    return (
+      <p>{this.indentGenerator(indent)}&#60;&#47;{element.type}&#62;{element.content}&#60;&#47;{element.type}&#62;</p>
+    )
+  }
+
   indentGenerator(indent) {
     var indents = [];
     for (var i=1; i<=indent+4; i++) {
@@ -28,11 +34,15 @@ class HTMLTranslator extends Component {
   renderHTML(array, results = [], indent=0) {
     indent += 2
     for (var element of array) {
-      results.push(this.htmlOpen(element, indent))
-      if (element.children !== []) {
-        this.renderHTML(element.children, results, indent)
+      if (!!element.content) {
+        results.push(this.htmlText(element, indent))
+      } else {
+        results.push(this.htmlOpen(element, indent))
+        if (element.children !== []) {
+          this.renderHTML(element.children, results, indent)
+        }
+        results.push(this.htmlClose(element, indent))
       }
-      results.push(this.htmlClose(element, indent))
     }
     return results
   }

@@ -1,0 +1,10 @@
+
+.header button {
+  float: right;
+  margin-top: 5%;
+}
+
+.header h1 {
+  float: left;
+  margin-left: 10px;
+}
