@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Container from './Container';
 import CSSViewer from './CSSViewer';
-// import HTMLViewer from './HTMLViewer';
+import HTMLViewer from './HTMLViewer';
+import htmlModule from './htmlModule';
 import '../public/css/App.css';
 
 class App extends Component {

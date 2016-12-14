@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import fileDownload from 'react-file-download';
 import CSStoFile from './CSStoFile';
+import HTMLtoFile from './HTMLtoFile';
 import CSSViewer from './CSSViewer';
-// import HTMLViewer from './HTMLViewer';
-import CSSTranslator from './CSSTranslator';
+import HTMLViewer from './HTMLViewer';
 
 class Header extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class Header extends Component {
   }
 
   codeDownload () {
-    fileDownload(CSStoFile(), 'CSSfile.css');
+    fileDownload(CSStoFile(), 'yourCSS.css');
+    fileDownload(HTMLtoFile(), 'yourHTML.html');
   }
 
   switchCSS() {
@@ -33,9 +34,6 @@ class Header extends Component {
       </div>
     );
   }
-
-
-
 }
 
 export default Header;
