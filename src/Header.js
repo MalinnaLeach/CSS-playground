@@ -9,6 +9,8 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.codeDownload = this.codeDownload.bind(this);
+    this.switchCSS = this.switchCSS.bind(this);
+    this.switchHTML = this.switchHTML.bind(this);
   }
 
   codeDownload () {

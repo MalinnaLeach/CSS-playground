@@ -14,6 +14,7 @@ class App extends Component {
     };
     this.updateCssViewer = this.updateCssViewer.bind(this);
     this.updateView = this.updateView.bind(this);
+    this.showView = this.showView.bind(this);
   }
 
   updateView(input) {
@@ -22,13 +23,21 @@ class App extends Component {
     })
   }
 
+  showView() {
+    if (this.state.view === 'css') {
+      return <CSSViewer />
+    } else {
+      return <HTMLViewer />
+    }
+  }
+
   render () {
-  return (
-    <div className="App">
-      <Header updateView={this.updateView}/>
-      <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
-      <CSSViewer />
-    </div>
+    return (
+      <div className="App">
+        <Header updateView={this.updateView}/>
+        <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
+        {this.showView()}
+      </div>
     );
   };
 
