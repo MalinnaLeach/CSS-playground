@@ -45,12 +45,15 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
-      content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
-      decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
-      increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} />,
+      title: "You are working on: " + this.state.className,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
+      decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
+      addChildText={here.addChildText} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
+      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} 
+      increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} 
+      decreaseRightMargin={here.decreaseRightMargin} increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} 
+      increaseBottomMargin={here.increaseBottomMargin} decreaseBottomMargin={here.decreaseBottomMargin}/>,
       buttons: {
         right: ['ok']
       }
