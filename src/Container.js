@@ -74,7 +74,7 @@ class Container extends Component {
 
   renderImage() {
     return this.state.images.map((url, index) => (
-      <AddImage key={index} imageUrl={url} height="100vh" />
+      <AddImage key={index} className={"img"+String(index)} imageUrl={url} height="100vh" updateCssViewer={this.props.updateCssViewer} />
     ))
   }
 
@@ -246,6 +246,7 @@ class Container extends Component {
       this.props.updateCssViewer();
     }
   }
+
 
 ///////////////////////////////////////////////////////////////////////
 
