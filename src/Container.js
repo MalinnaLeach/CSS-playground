@@ -35,6 +35,7 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
+      title: "You are working on: " + this.state.className,
       content: <Menu value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
       decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
