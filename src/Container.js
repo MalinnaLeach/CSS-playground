@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
-import Menu from './Menu';
-import AddText from './AddText';
-import cssModule from './cssModule';
+import Menu from './Menu'
+import AddText from './AddText'
+import AddImage from './AddImage'
+import cssModule from './cssModule'
 import htmlModule from './htmlModule';
 import '../public/css/Container.css';
 
 class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = {className: this.props.className, style: this.props.style, containers: [], text: [] }
+    this.state = {className: this.props.className, style: this.props.style, containers: [], text: [], images: [] }
     this.showMenu = this.showMenu.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.addChildDiv = this.addChildDiv.bind(this);
     this.renderDiv = this.renderDiv.bind(this);
     this.addChildText = this.addChildText.bind(this);
+    this.addChildImage = this.addChildImage.bind(this);
     this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
     this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
@@ -39,6 +41,7 @@ class Container extends Component {
       <div className={this.state.className} onClick={this.showMenu} style={this.state.style} >
         {this.renderDiv()}
         {this.renderText()}
+        {this.renderImage()}
       </div>
     );
   }
@@ -46,10 +49,13 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
-      content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
-      decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
+      title: "You are working on: " + this.state.className,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
+      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
+      increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
+      addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
+      decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
       buttons: {
@@ -64,6 +70,12 @@ class Container extends Component {
   renderDiv() {
     return this.state.containers.map(div => (
       <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
+    ))
+  }
+
+  renderImage() {
+    return this.state.images.map((url, index) => (
+      <AddImage key={index} imageUrl={url} height="100vh" />
     ))
   }
 
@@ -87,6 +99,13 @@ class Container extends Component {
     cssModule[className] = {}
     this.htmlUpdate(htmlModule, this.props.className, className)
     this.setState({ containers: [...this.state.containers, className]});
+    this.props.updateCssViewer()
+  }
+
+  addChildImage(url) {
+    console.log(url)
+    this.state.style["background-image"] = url
+    this.setState({images: [...this.state.images, url]});
     this.props.updateCssViewer()
   }
 
@@ -125,7 +144,9 @@ class Container extends Component {
   }
 
   changeBorderColor(color) {
-    if (color == "Light grey") {
+    if (color == "Transparent") {
+      color = "transparent"
+    } else if (color == "Light grey") {
       color = "#D0D0D0"
     } else if (color == "Dark grey") {
       color = "#808080"

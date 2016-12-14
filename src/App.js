@@ -9,17 +9,25 @@ import '../public/css/App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      view: 'css'
+    };
     this.updateCssViewer = this.updateCssViewer.bind(this);
+    this.updateView = this.updateView.bind(this);
   }
 
+  updateView(input) {
+    this.setState({
+      view: input
+    })
+  }
 
   render () {
   return (
     <div className="App">
-      <Header />
-      <Container key="background" className="background" htmlRef={htmlModule[0]} style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
-      <HTMLViewer />
+      <Header updateView={this.updateView}/>
+      <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
+      <CSSViewer />
     </div>
     );
   };
