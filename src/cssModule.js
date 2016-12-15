@@ -1,6 +1,3 @@
 
-const cssModule = {
-  "background":
-  {"backgroundColor": "white", "height": "100vh"}
-}
+const cssModule = {}
 export default cssModule;

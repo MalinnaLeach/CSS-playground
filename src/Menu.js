@@ -22,37 +22,7 @@ class Menu extends Component {
   }
 
   render () {
-    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"}
-    return (
-      <div className="menu">
-      <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)}/>
-      <div style={colourBoxStyle}>
-        {this.state.color}
-      </div>
-      <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
-      <button id="newDiv" onClick={this.handleNewImage}>Insert image</button>
-      <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-      <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-
-      <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
-
-      <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
-
-      <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
-      <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
-      <h3>Change border width:</h3>
-      <button id="increase" onClick={this.increaseBorderWidth}>+</button>
-      <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
-      <h3>Select your border style:</h3>
-      <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
-      <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
-      increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
-      increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
-      increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
-      increaseBottomMargin={this.props.increaseBottomMargin} decreaseBottomMargin = {this.props.decreaseBottomMargin} />
-      </div>
-    );
-
+    var colourBoxStyle = {background: this.state.color, width: 100, height: 50, color: 'white', borderWidth: "3px", borderStyle: "solid", borderColor: "#000"};
     if (this.props.parentContainer === "background") {
       return (
         <div className="menu">
@@ -71,6 +41,8 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
+          <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
+          <button id="newIMage" onClick={this.handleNewImage}>Insert image</button>
           <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
           <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
           <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
@@ -85,7 +57,7 @@ class Menu extends Component {
           <h3>Change border radius:</h3>
           <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
           <h3>Change border color:</h3>
-          <Dropdown items={["Black", "Dark grey", "Light grey"]} eventHandler={this.props.changeBorderColor}/>
+          <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
           <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
           increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
           increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}

@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 import Container from '../src/Container';
-import cssModule from '../src/cssModule'
+import cssModule from '../src/cssModule';
+import htmlModule from '../src/htmlModule';
 
 
 describe('<Container />', () => {
@@ -24,12 +25,13 @@ describe('<Container />', () => {
   it("is able to add a child container", () => {
     wrapper.instance().addChildDiv("babyDiv");
     expect(wrapper.find(".babyDiv").length).toEqual(1);
-    expect(cssModule["babyDiv"]).toEqual({"backgroundColor": "inherit", "border": "3px solid #000", "float": "left", "height": "50%", "width": "50%"})
+    expect(cssModule["babyDiv"]).toEqual({"backgroundColor": "inherit", "borderColor": "#000", "borderRadius": "0px", "borderStyle": "solid", "borderWidth": "3px", "height": "50%", "margin": "auto", "width": "50%"})
+    expect(htmlModule[0]).toEqual({type: "div", class: "babyDiv"})
   });
 
   it("is able to add a text box", () => {
     wrapper.instance().addChildText("p");
-    expect(wrapper.find(".p").length).toEqual(1);
+    expect(wrapper.find(".text0").length).toEqual(1);
   });
 
   it("can update it's background colour", () => {

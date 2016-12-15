@@ -5,6 +5,7 @@ import Menu from './Menu'
 import AddText from './AddText'
 import AddImage from './AddImage'
 import cssModule from './cssModule'
+import htmlModule from './htmlModule';
 import '../public/css/Container.css';
 
 class Container extends Component {
@@ -48,13 +49,13 @@ class Container extends Component {
   showMenu(e) {
     const here = this
     Popup.create({
-      content: <Menu parentContainer={here.state.className} value={here.state.color} onDrag={here.onDrag} increaseBorderWidth={here.increaseBorderWidth}
-      decreaseBorderWidth={here.decreaseBorderWidth} updateDivWidth={here.updateDivWidth} updateDivHeight={here.updateDivHeight}
-      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
+      title: "You are working on: " + this.state.className,
+      content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
+      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
+      increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
+      addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
-      changeBorderStyle={here.changeBorderStyle} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv}
-      addChildText={here.addChildText} increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
       decreaseBottomMargin={here.decreaseBottomMargin} />,
       buttons: {
@@ -68,30 +69,43 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} parent={this.state.className} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
+      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
   renderImage() {
     return this.state.images.map((url, index) => (
-      <AddImage key={index} className={"img"+String(index)} imageUrl={url} height="100vh" updateCssViewer={this.props.updateCssViewer} />
+      <AddImage key={index} imageUrl={url} height="100vh" className={"img"+String(index)} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
     ))
   }
 
   renderText() {
     return this.state.text.map((text, index) => (
-      <AddText key={index} className={"text"+String(index)} textType={text} updateCssViewer={this.props.updateCssViewer}/>
+      <AddText key={index} className={"text"+String(index)} textType={text} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
     ))
+  }
+
+  htmlUpdate(array, parent, name) {
+    for (var object of array) {
+      if (object.class === parent) {
+        object.children.push({class: name, type: "div", children: []})
+      } else if (object.children !== []) {
+        this.htmlUpdate(object.children, parent, name)
+      }
+    }
   }
 
   addChildDiv(className) {
     cssModule[className] = {}
+    this.htmlUpdate(htmlModule, this.props.className, className)
     this.setState({ containers: [...this.state.containers, className]});
     this.props.updateCssViewer()
   }
 
   addChildImage(url) {
+    this.state.style["background-image"] = url
     this.setState({images: [...this.state.images, url]});
+    this.props.updateCssViewer()
   }
 
   addChildText(textType) {
@@ -129,7 +143,9 @@ class Container extends Component {
   }
 
   changeBorderColor(color) {
-    if (color == "Light grey") {
+    if (color == "Transparent") {
+      color = "transparent"
+    } else if (color == "Light grey") {
       color = "#D0D0D0"
     } else if (color == "Dark grey") {
       color = "#808080"

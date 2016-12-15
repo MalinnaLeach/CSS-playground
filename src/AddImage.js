@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import ImageMenu from "./ImageMenu"
 import cssModule from './cssModule'
+import htmlModule from './htmlModule'
 
 class AddImage extends Component {
   constructor(props) {
     super(props);
+
     this.state = {imageUrl: props.imageUrl, imageHeight: props.height, style: {}}
     this.updateHeight = this.updateHeight.bind(this)
     this.showImageMenu = this.showImageMenu.bind(this)
@@ -43,6 +45,7 @@ class AddImage extends Component {
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
   }
+
 
   changeAlignment(alignment) {
     if (alignment === "centre") {
@@ -141,23 +144,33 @@ class AddImage extends Component {
     }
   }
 
-
-  render () {
-    return (
-      <div className="AddImage" onClick={this.showImageMenu}>
-        <img src={this.state.imageUrl} height={this.state.imageHeight} style={this.state.style} className=""/>
-      </div>
-    )
+  htmlUpdate(array, parent, name) {
+    for (var object of array) {
+      if (object.class === parent) {
+        object.children.push({class: name, type: "img", src: this.state.imageUrl, children: []})
+      } else if (object.children !== []) {
+        this.htmlUpdate(object.children, parent, name)
+      }
+    }
   }
+
+  componentDidMount() {
+    this.htmlUpdate(htmlModule[0].children, this.props.parent, this.props.className)
+    this.updateCssModule();
+  };
 
   updateCssModule() {
     cssModule[this.props.className] = this.state.style;
     this.props.updateCssViewer();
   }
 
-  componentDidMount() {
-    this.updateCssModule();
-  };
+  render () {
+    return (
+      <div className="AddImage" onClick={this.showImageMenu}>
+        <img src={this.state.imageUrl} height={this.state.imageHeight} style={this.state.style} />
+      </div>
+    )
+  }
 
   }
 
