@@ -18,22 +18,13 @@ class Container extends Component {
     this.renderDiv = this.renderDiv.bind(this);
     this.addChildText = this.addChildText.bind(this);
     this.addChildImage = this.addChildImage.bind(this);
-    this.increaseBorderWidth = this.increaseBorderWidth.bind(this);
-    this.decreaseBorderWidth = this.decreaseBorderWidth.bind(this);
     this.changeBorderStyle = this.changeBorderStyle.bind(this);
     this.changeBorderRadius = this.changeBorderRadius.bind(this);
     this.changeBorderColor = this.changeBorderColor.bind(this);
-    this.updateDivWidth = this.updateDivWidth.bind(this);
-    this.updateDivHeight = this.updateDivHeight.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
-    this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
-    this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
-    this.increaseRightMargin = this.increaseRightMargin.bind(this);
-    this.decreaseRightMargin = this.decreaseRightMargin.bind(this);
-    this.increaseTopMargin = this.increaseTopMargin.bind(this);
-    this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
-    this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
-    this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
+    this.updateDivSize = this.updateDivSize.bind(this);
+    this.changeBorderWidth = this.changeBorderWidth.bind(this);
+    this.changeMargin = this.changeMargin.bind(this);
   }
 
   render () {
@@ -50,14 +41,14 @@ class Container extends Component {
     const here = this
     Popup.create({
       title: "You are working on: " + this.state.className,
-      content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className} updateDivWidth={here.updateDivWidth}
-      updateDivHeight={here.updateDivHeight} changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
-      increaseBorderWidth={here.increaseBorderWidth} decreaseBorderWidth={here.decreaseBorderWidth} setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
+      content: <Menu value={here.state.color} onDrag={here.onDrag} parentContainer={here.state.className}
+      changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
+      setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
       addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
       decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
       increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} />,
+      decreaseBottomMargin={here.decreaseBottomMargin} updateDivSize={here.updateDivSize} changeBorderWidth={here.changeBorderWidth} changeMargin={here.changeMargin}/>,
       buttons: {
         right: ['ok']
       }
@@ -103,7 +94,6 @@ class Container extends Component {
   }
 
   addChildImage(url) {
-    this.state.style["background-image"] = url
     this.setState({images: [...this.state.images, url]});
     this.props.updateCssViewer()
   }
@@ -120,15 +110,10 @@ class Container extends Component {
     this.props.updateCssViewer();
   }
 
-  increaseBorderWidth() {
-    var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
-    this.state.style["borderWidth"] = String((thickness + 1)) + "px"
-    this.props.updateCssViewer();
-  }
 
-  decreaseBorderWidth() {
+  changeBorderWidth(n) {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
-    this.state.style["borderWidth"] = String((thickness - 1)) + "px"
+    this.state.style["borderWidth"] = String((thickness + n)) + "px"
     this.props.updateCssViewer();
   }
 
@@ -156,13 +141,8 @@ class Container extends Component {
     this.props.updateCssViewer();
   }
 
-  updateDivWidth (width) {
-    this.state.style["width"] = String(width) + "%";
-    this.props.updateCssViewer();
-  }
-
-  updateDivHeight (height) {
-    this.state.style["height"] = String(height) + "%";
+  updateDivSize(size, dimension) {
+    this.state.style[dimension] = String(size) + "%"
     this.props.updateCssViewer();
   }
 
@@ -175,93 +155,17 @@ class Container extends Component {
     this.props.updateCssViewer();
   }
 
-  increaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin + 5)) + "%"
+  changeMargin(size, dimension) {
+    if (!!this.state.style["margin" + dimension]) {
+      var margin = parseInt((this.state.style["margin" + dimension].split("%"))[0]);
+      this.state.style["margin" + dimension] = String((margin + size)) + "%"
       this.props.updateCssViewer();
     } else {
-      this.state.style["marginLeft"] = "5%"
+      this.state.style["margin" + dimension] = String(size) + "%"
       this.props.updateCssViewer();
     }
   }
 
-  decreaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginLeft"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginRight"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginRight"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginTop"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginTop"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginBottom"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginBottom"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
 
 ///////////////////////////////////////////////////////////////////////
 
