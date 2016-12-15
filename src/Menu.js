@@ -42,7 +42,7 @@ class Menu extends Component {
             {this.state.color}
           </div>
           <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
-          <button id="newDiv" onClick={this.handleNewImage}>Insert image</button>
+          <button id="newIMage" onClick={this.handleNewImage}>Insert image</button>
           <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
           <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
           <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
