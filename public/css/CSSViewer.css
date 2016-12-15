@@ -1,11 +1,25 @@
-.CSSViewer{
-  float: left;
+.CSSViewer {
+  float: right;
   height: 100vh;
   overflow: scroll;
   width: 20%;
   margin-right: 20px;
-  margin-left: 5px;
-  border-width: 6px 6px 6px 5px;
+  border-width: 3px 3px 3px 2px;
   border-color: #ccc;
   border-style: solid;
+  font-family: 'Roboto Mono';
+}
+
+.header {
+  display: block;
+  font-family: 'Comfortaa';
+  font-weight: bold;
+  text-align: center;
+  border-width: 0 0 3px 0;
+  border-color: #ccc;
+  border-style: solid;
+}
+
+.header h1 {
+  padding-bottom: 10px;
 }

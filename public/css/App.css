@@ -1,9 +1,10 @@
 
 .background {
   float: left;
-  border-width: 6px 5px 6px 6px;
+  border-width: 3px;
   border-color: black;
   border-style: solid;
   height: 100vh;
   width: 75%;
+  margin-left: 20px;
 }
