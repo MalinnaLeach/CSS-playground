@@ -4,7 +4,20 @@
 
 .header button {
   float: right;
-  margin-top: 5%;
+  margin: 10px 4px;
+  padding: 10px;
+  border-radius: 5%;
+  border-style: none;
+  background-color: #A0A0A0;
+  font-family: 'Comfortaa';
+  font-size: 1.1em;
+  text-shadow: 2px 2px 5px #404040;
+  color: #fff;
+}
+
+.header button:hover {
+  background-color: #cc0052;
+  opacity: 80%;
 }
 
 .header h1 {
@@ -23,18 +36,6 @@
   float: right;
   -webkit-margin-before: 0.8em;
   margin-right: 23px;
-}
-
-button {
-  border-radius: 5%;
-  border-style: none;
-  background-color: #A0A0A0;
-  font-family: 'Comfortaa';
-  font-size: 1.1em;
-  text-shadow: 2px 2px 5px #404040;
-  color: #fff;
-  padding: 10px;
-  margin: 0 4px;
 }
 
 @font-face {
