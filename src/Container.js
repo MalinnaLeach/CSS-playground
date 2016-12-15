@@ -75,7 +75,7 @@ class Container extends Component {
 
   renderImage() {
     return this.state.images.map((url, index) => (
-      <AddImage key={index} imageUrl={url} height="100vh" className={"img"+String(index)} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
+      <AddImage key={index} imageUrl={url} height="20vh" className={"img"+String(index)} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
     ))
   }
 
@@ -103,7 +103,6 @@ class Container extends Component {
   }
 
   addChildImage(url) {
-    this.state.style["background-image"] = url
     this.setState({images: [...this.state.images, url]});
     this.props.updateCssViewer()
   }

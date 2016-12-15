@@ -9,7 +9,7 @@ class AddImage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {imageUrl: props.imageUrl, imageHeight: props.height, style: {}}
+    this.state = {imageUrl: props.imageUrl, style: {height: props.height}}
     this.updateHeight = this.updateHeight.bind(this)
     this.showImageMenu = this.showImageMenu.bind(this)
     this.setHeight = this.setHeight.bind(this)
@@ -25,11 +25,12 @@ class AddImage extends Component {
   }
 
   setHeight() {
-    return this.state.imageHeight
+    return this.state.style.height
   }
 
   updateHeight(height) {
-    this.setState({imageHeight: height})
+    this.state.style.height = String(height) + "vh"
+    this.props.updateCssViewer();
   }
 
 
@@ -165,9 +166,10 @@ class AddImage extends Component {
   }
 
   render () {
+    console.log(this.state.style.height)
     return (
       <div className="AddImage" onClick={this.showImageMenu}>
-        <img src={this.state.imageUrl} height={this.state.imageHeight} style={this.state.style} />
+        <img src={this.state.imageUrl} style={this.state.style} />
       </div>
     )
   }

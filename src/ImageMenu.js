@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Positioning from './Positioning';
 
-class TextMenu extends Component {
+class ImageMenu extends Component {
   constructor (props) {
     super(props);
     this.handleHeight = this.handleHeight.bind(this);
@@ -14,7 +14,7 @@ class TextMenu extends Component {
 
 
   heightCheck() {
-    return this.props.height
+    return this.props.height.split("vh")[0]
   }
 
 
@@ -22,7 +22,7 @@ class TextMenu extends Component {
     return (
       <div className="textInput">
         <p>Change image size: </p>
-        <input id="textInput" type="text" defaultValue={this.heightCheck()} onChange={this.handleHeight}/>
+        <input id="imageInput" type="text" defaultValue={this.heightCheck()} onChange={this.handleHeight}/>vh
         <Positioning changeAlignment={this.props.changeAlignment} increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
         increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
         increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
@@ -33,4 +33,4 @@ class TextMenu extends Component {
 
 }
 
-export default TextMenu
+export default ImageMenu
