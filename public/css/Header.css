@@ -1,3 +1,7 @@
+.header {
+  height: 100px;
+}
+
 .header button {
   float: right;
   margin-top: 5%;
@@ -5,16 +9,38 @@
 
 .header h1 {
   float: left;
-  margin-left: 10px;
-  padding-bottom: 10px;
-  font-size: 2.5em;
+  font-size: 4em;
   font-family: 'pigment_demoregular';
+  -webkit-margin-before: 0.15em;
+  -webkit-margin-after: 0em;
+  margin-left: 25px;
+  display: inline-block;
+  color: #ff0066;
+}
+
+.buttonDiv {
+  display: inline-block;
+  float: right;
+  -webkit-margin-before: 0.8em;
+  margin-right: 23px;
+}
+
+button {
+  border-radius: 5%;
+  border-style: none;
+  background-color: #A0A0A0;
+  font-family: 'Comfortaa';
+  font-size: 1.1em;
+  text-shadow: 2px 2px 5px #404040;
+  color: #fff;
+  padding: 10px;
+  margin: 0 4px;
 }
 
 @font-face {
-    font-family: 'pigment_demoregular';
-    src: url('pigment_demo-webfont.woff2') format('woff2'),
-         url('pigment_demo-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'pigment_demoregular';
+  src: url('pigment_demo-webfont.woff2') format('woff2'),
+       url('pigment_demo-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

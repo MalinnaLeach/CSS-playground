@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header updateView={this.updateView}/>
-        <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
+        <Container key="background" className="background" style={{backgroundColor: "white", height: "88vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
         {this.showView()}
       </div>
     );
