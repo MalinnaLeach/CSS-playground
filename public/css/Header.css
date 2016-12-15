@@ -20,6 +20,10 @@
   opacity: 80%;
 }
 
+.header button:focus {
+  outline: none;
+}
+
 .header h1 {
   float: left;
   font-size: 4em;
