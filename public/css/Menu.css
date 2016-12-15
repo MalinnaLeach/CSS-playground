@@ -1,4 +1,7 @@
-.menu h3 {
+.menu h5 {
+  font-size: 1em;
+  font-family: "";
+  style: normal;
 
 }
 
@@ -14,9 +17,26 @@ Dropdown {
 
 }
 
+.colorpickerdiv {
+  border: 1px dashed blue;
+  display: inline-block;
+}
+
 input {
 
 }
+
+.cpreact {
+  border: 5px solid green;
+  display: block;
+}
+
+.settingDiv {
+  border: 1px dashed red;
+  display: inline-block;
+}
+
+
 
 /*Image URL text input*/
 #imageInput {
