@@ -31,9 +31,11 @@ class Header extends Component {
     return (
       <div className="header">
         <h1>CSS Playground</h1>
+        <div className="buttonDiv">
         <button id="download" onClick={this.codeDownload}>Download files</button>
         <button id="showcss" onClick={this.switchCSS}>Show CSS</button>
         <button id="showhtml" onClick={this.switchHTML}>Show HTML</button>
+        </div>
       </div>
     );
   }
