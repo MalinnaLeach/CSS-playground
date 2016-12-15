@@ -9,9 +9,7 @@ import '../public/css/App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      view: 'css'
-    };
+    this.state = {view: 'css'};
     this.updateCssViewer = this.updateCssViewer.bind(this);
     this.updateView = this.updateView.bind(this);
     this.showView = this.showView.bind(this);
