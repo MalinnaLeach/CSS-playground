@@ -22,4 +22,10 @@ describe('<AddText />', () => {
     expect(wrapper.state().content).toEqual("some test text");
   })
 
+  it("can update it's own alignment", () => {
+    const wrapper = mount(<AddText textType="h1" />);
+    wrapper.instance().changeAlignment("right");
+    expect(wrapper.state().style.float).toEqual("right");
+  })
+
 });

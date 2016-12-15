@@ -32,22 +32,22 @@ class AddText extends Component {
     } else {
       this.state.style["float"] = alignment
     }
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeFontSize(size) {
     this.state.style["fontSize"] = size + "px"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   increaseLeftMargin() {
     if (!!this.state.style["marginLeft"]) {
       var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
       this.state.style["marginLeft"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginLeft"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -55,10 +55,10 @@ class AddText extends Component {
     if (!!this.state.style["marginLeft"]) {
       var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
       this.state.style["marginLeft"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginLeft"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -66,10 +66,10 @@ class AddText extends Component {
     if (!!this.state.style["marginRight"]) {
       var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
       this.state.style["marginRight"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginRight"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -77,10 +77,10 @@ class AddText extends Component {
     if (!!this.state.style["marginRight"]) {
       var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
       this.state.style["marginRight"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginRight"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -88,10 +88,10 @@ class AddText extends Component {
     if (!!this.state.style["marginTop"]) {
       var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
       this.state.style["marginTop"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginTop"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -99,10 +99,10 @@ class AddText extends Component {
     if (!!this.state.style["marginTop"]) {
       var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
       this.state.style["marginTop"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginTop"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -110,10 +110,10 @@ class AddText extends Component {
     if (!!this.state.style["marginBottom"]) {
       var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
       this.state.style["marginBottom"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginBottom"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -121,10 +121,10 @@ class AddText extends Component {
     if (!!this.state.style["marginBottom"]) {
       var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
       this.state.style["marginBottom"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginBottom"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -139,7 +139,7 @@ class AddText extends Component {
   updateText (text) {
     this.setState({ content: text })
     this.htmlUpdateContent(htmlModule[0].children, text)
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
     }
 
   setContent() {
@@ -201,7 +201,7 @@ class AddText extends Component {
   componentDidMount() {
     this.updateCssModule();
     this.htmlUpdate(htmlModule[0].children, this.props.parent, this.props.className)
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   };
 
 }

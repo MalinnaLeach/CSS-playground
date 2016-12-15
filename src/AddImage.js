@@ -30,7 +30,7 @@ class AddImage extends Component {
 
   updateHeight(height) {
     this.state.style.height = String(height) + "vh"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
 
@@ -54,17 +54,17 @@ class AddImage extends Component {
     } else {
       this.state.style["float"] = alignment
     }
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   increaseLeftMargin() {
     if (!!this.state.style["marginLeft"]) {
       var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
       this.state.style["marginLeft"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginLeft"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -72,10 +72,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginLeft"]) {
       var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
       this.state.style["marginLeft"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginLeft"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -83,10 +83,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginRight"]) {
       var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
       this.state.style["marginRight"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginRight"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -94,10 +94,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginRight"]) {
       var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
       this.state.style["marginRight"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginRight"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -105,10 +105,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginTop"]) {
       var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
       this.state.style["marginTop"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginTop"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -116,10 +116,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginTop"]) {
       var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
       this.state.style["marginTop"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginTop"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -127,10 +127,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginBottom"]) {
       var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
       this.state.style["marginBottom"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginBottom"] = "5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -138,10 +138,10 @@ class AddImage extends Component {
     if (!!this.state.style["marginBottom"]) {
       var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
       this.state.style["marginBottom"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["marginBottom"] = "-5%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
@@ -162,7 +162,7 @@ class AddImage extends Component {
 
   updateCssModule() {
     cssModule[this.props.className] = this.state.style;
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   render () {
