@@ -3,6 +3,7 @@ import ColorPicker from 'react-color-picker';
 import 'react-color-picker/index.css';
 import Dropdown from './Dropdown';
 import Positioning from './Positioning';
+import '../public/css/Menu.css';
 
 class Menu extends Component {
   constructor(props) {
@@ -42,22 +43,22 @@ class Menu extends Component {
             {this.state.color}
           </div>
           <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
-          <button id="newDiv" onClick={this.handleNewImage}>Insert image</button>
+          <button id="newDiv" className="textbutton" onClick={this.handleNewImage}>Insert image</button>
           <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-          <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+          <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new div</button>
           <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
           <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
-          <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
-          <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
+          <button id="newTitle" className="textbutton" onClick={this.handleNewTitle}>Add title</button>
+          <button id="newParagraph" className="textbutton" onClick={this.handleNewParagraph}>Add paragraph</button>
           <h3>Change border width:</h3>
-          <button id="increase" onClick={this.increaseBorderWidth}>+</button>
-          <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
+          <button id="increaseBorderWidth" className="resizebutton" onClick={this.increaseBorderWidth}>+</button>
+          <button id="decreaseBorderWidth" className="resizebutton" onClick={this.decreaseBorderWidth}>-</button>
           <h3>Change border style:</h3>
-          <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+          <Dropdown id="borderStyleDropdown" items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
           <h3>Change border radius:</h3>
-          <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
+          <input id="borderRadiusDropdown" id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
           <h3>Change border color:</h3>
-          <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
+          <Dropdown id="borderColorDropdown"items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
           <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
           increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
           increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
