@@ -8,7 +8,6 @@ import htmlModule from './htmlModule'
 class AddImage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {imageUrl: props.imageUrl, style: {height: props.height}}
     this.updateHeight = this.updateHeight.bind(this)
     this.showImageMenu = this.showImageMenu.bind(this)
@@ -166,7 +165,6 @@ class AddImage extends Component {
   }
 
   render () {
-    console.log(this.state.style.height)
     return (
       <div className="AddImage" onClick={this.showImageMenu}>
         <img src={this.state.imageUrl} style={this.state.style} />

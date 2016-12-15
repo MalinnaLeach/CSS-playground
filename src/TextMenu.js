@@ -56,11 +56,8 @@ class TextMenu extends Component {
         <p>Your text: </p>
         <input id="textInput" type="text" placeholder={this.placeholderCheck()} defaultValue={this.valueCheck()} onChange={this.handleText} />
         <p>Change font size: </p>
-        <input id="textInput" type="text" placeholder={this.sizePlaceCheck()} defaultValue={this.sizeCheck()} onChange={this.handleFontSize} /> px
-        <Positioning changeAlignment={this.props.changeAlignment} increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
-        increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
-        increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
-        increaseBottomMargin={this.props.increaseBottomMargin} decreaseBottomMargin = {this.props.decreaseBottomMargin} />
+        <input id="fontSizeInput" type="text" placeholder={this.sizePlaceCheck()} defaultValue={this.sizeCheck()} onChange={this.handleFontSize} /> px
+        <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
       </div>
     )
   }

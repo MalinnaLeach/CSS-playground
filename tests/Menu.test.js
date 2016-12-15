@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import Menu from '../src/Menu';
 import ColorPicker from 'react-color-picker';
+import Positioning from '../src/Positioning'
 
 describe ("Menu", () => {
 
   it("renders a ColorPicker", () => {
     const wrapper = shallow(<Menu />);
     expect(wrapper.find(ColorPicker).length).toEqual(1);
+  })
+
+  it("will render a Positioning component", () => {
+    const wrapper = shallow(<Menu />);
+    expect(wrapper.find(Positioning).length).toEqual(1);
   })
 
   it("will update itself and run a props function when colour chosen", () => {

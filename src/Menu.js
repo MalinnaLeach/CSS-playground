@@ -19,14 +19,6 @@ class Menu extends Component {
     this.setBorderRadius = this.setBorderRadius.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
-    this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
-    this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
-    this.increaseRightMargin = this.increaseRightMargin.bind(this);
-    this.decreaseRightMargin = this.decreaseRightMargin.bind(this);
-    this.increaseTopMargin = this.increaseTopMargin.bind(this);
-    this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
-    this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
-    this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
   }
 
   render () {
@@ -66,11 +58,7 @@ class Menu extends Component {
           <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
           <h3>Change border color:</h3>
           <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
-          <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
-          increaseLeftMargin={this.increaseLeftMargin} decreaseLeftMargin = {this.decreaseLeftMargin}
-          increaseRightMargin={this.increaseRightMargin} decreaseRightMargin={this.decreaseRightMargin}
-          increaseTopMargin={this.increaseTopMargin} decreaseTopMargin = {this.decreaseTopMargin}
-          increaseBottomMargin={this.increaseBottomMargin} decreaseBottomMargin = {this.decreaseBottomMargin} />
+          <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
         </div>
       );
     }
@@ -124,39 +112,6 @@ class Menu extends Component {
   setDivHeight(e) {
     this.props.updateDivSize(e.target.value, "height");
   }
-
-  increaseLeftMargin() {
-    this.props.changeMargin(5, "Left")
-  }
-
-  decreaseLeftMargin() {
-    this.props.changeMargin(-5, "Left")
-  }
-
-  increaseRightMargin() {
-    this.props.changeMargin(5, "Right")
-  }
-
-  decreaseRightMargin() {
-    this.props.changeMargin(-5, "Right")
-  }
-
-  increaseTopMargin() {
-    this.props.changeMargin(5, "Top")
-  }
-
-  decreaseTopMargin() {
-    this.props.changeMargin(-5, "Top")
-  }
-
-  increaseBottomMargin() {
-    this.props.changeMargin(5, "Bottom")
-  }
-
-  decreaseBottomMargin() {
-    this.props.changeMargin(-5, "Bottom")
-  }
-
 
 }
 
