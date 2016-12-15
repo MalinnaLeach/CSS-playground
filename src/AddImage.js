@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Popup from 'react-popup';
 import ImageMenu from "./ImageMenu"
+import htmlModule from './htmlModule'
 
 class AddImage extends Component {
   constructor(props) {
@@ -31,6 +32,21 @@ class AddImage extends Component {
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
   }
+
+  htmlUpdate(array, parent, name) {
+    for (var object of array) {
+      if (object.class === parent) {
+        object.children.push({class: name, type: "img", src: this.state.imageUrl, children: []})
+      } else if (object.children !== []) {
+        this.htmlUpdate(object.children, parent, name)
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.htmlUpdate(htmlModule[0].children, this.props.parent, this.props.className)
+    this.props.updateCssViewer();
+  };
 
 
   render () {

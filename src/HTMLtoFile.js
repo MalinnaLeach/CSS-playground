@@ -19,13 +19,28 @@ const HTMLtoFile = (array=htmlModule[0].children) => {
 const moduleLoop = (array, results=[], indent="  ") => {
   indent += "  "
   for (var element of array) {
-    results.push(indent)
-    results.push("<" + element.type + " class=\"" + element.class + "\">\n")
-    if (element.children !== []) {
-      moduleLoop(element.children, results, indent)
+    if (!!element.content) {
+      results.push(indent)
+      results.push("<" + element.type + " class=\"" + element.class + "\">")
+      results.push(element.content)
+      results.push("</" + element.type + ">\n")
+    } else if (!!element.src) {
+      results.push(indent)
+      results.push("<" + element.type + " class=\"" + element.class + "\" src=\"" + element.src + "\" />\n")
     }
-    results.push(indent)
-    results.push("</" + element.type + ">\n")
+
+
+
+
+    else {
+      results.push(indent)
+      results.push("<" + element.type + " class=\"" + element.class + "\">\n")
+      if (element.children !== []) {
+        moduleLoop(element.children, results, indent)
+      }
+      results.push(indent)
+      results.push("</" + element.type + ">\n")
+    }
   }
   return results.join("");
 }

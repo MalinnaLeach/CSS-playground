@@ -7,12 +7,24 @@ class HTMLTranslator extends Component {
   }
 
   htmlOpen(element, indent) {
-    return <p>{this.indentGenerator(indent)}&#60;{element.type}&nbsp;class={element.class}&#62;</p>
+    return <p>{this.indentGenerator(indent)}&#60;{element.type}&nbsp;class=&quot;{element.class}&quot;&#62;</p>
   }
 
   htmlClose(element, indent) {
     return (
       <p>{this.indentGenerator(indent)}&#60;&#47;{element.type}&#62;</p>
+    )
+  }
+
+  htmlText(element, indent) {
+    return (
+      <p>{this.indentGenerator(indent)}&#60;{element.type}&nbsp;class=&quot;{element.class}&quot;&#62;{element.content}&#60;&#47;{element.type}&#62;</p>
+    )
+  }
+
+  htmlImg(element, indent) {
+    return (
+      <p>{this.indentGenerator(indent)}&#60;{element.type}&nbsp;class=&quot;{element.class}&quot;&nbsp;src=&quot;{element.src}&quot;&#47;&nbsp;&#62;</p>
     )
   }
 
@@ -28,11 +40,17 @@ class HTMLTranslator extends Component {
   renderHTML(array, results = [], indent=0) {
     indent += 2
     for (var element of array) {
-      results.push(this.htmlOpen(element, indent))
-      if (element.children !== []) {
-        this.renderHTML(element.children, results, indent)
+      if (!!element.content) {
+        results.push(this.htmlText(element, indent))
+      } else if (!!element.src) {
+        results.push(this.htmlImg(element, indent))
+      } else {
+        results.push(this.htmlOpen(element, indent))
+        if (element.children !== []) {
+          this.renderHTML(element.children, results, indent)
+        }
+        results.push(this.htmlClose(element, indent))
       }
-      results.push(this.htmlClose(element, indent))
     }
     return results
   }
