@@ -1,8 +1,32 @@
-.menu h5 {
-  font-size: 1em;
-  font-family: "";
-  style: normal;
+.colorpickerdiv {
+  border: 1px dashed blue;
+  width: 60%;
+}
 
+.sections,
+.dimensions,
+.borderstyle,
+.positioning {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: block;
+  width: 95%;
+  height: 130px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.settingSection,
+.settingBorder,
+.settingPosition {
+  width: 150px;
+  margin: 1px;
+  float: left;
+}
+
+h3,
+h5 {
+  margin: 0;
 }
 
 .menu .plusButton {
@@ -14,90 +38,8 @@
 }
 
 Dropdown {
-
-}
-
-.colorpickerdiv {
-  border: 1px dashed blue;
-  display: inline-block;
 }
 
 input {
-
-}
-
-.cpreact {
-  border: 5px solid green;
-  display: block;
-}
-
-.settingDiv {
-  border: 1px dashed red;
-  display: inline-block;
-}
-
-
-
-/*Image URL text input*/
-#imageInput {
-
-}
-
-/*Insert image button*/
-#newDiv {
-
-}
-
-/*New div text input*/
-#classInput {
-
-}
-
-/*New div button*/
-#newDiv {
-
-}
-/*Div width text box*/
-#divWidthInput {
-
-}
-
-/*Div height text box*/
-#divHeightInput {
-
-}
-
-/*Add title text box*/
-#newTitle {
-
-}
-
-/*Add paragraph text box*/
-#newParagraph {
-
-}
-
-/*Increase border width button*/
-#increaseBorderWidth {
-
-}
-
-/*Decrease border width button*/
-#decreaseBorderWidth {
-
-}
-
-/*Change border style dropdown*/
-#borderStyleDropdown {
-
-}
-
-/*Change border radius dropdown*/
-#borderRadiusDropdown {
-
-}
-
-/*Change color style dropdown*/
-#borderColorDropdown {
 
 }
