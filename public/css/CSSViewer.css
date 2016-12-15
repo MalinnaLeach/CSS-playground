@@ -10,7 +10,7 @@
   font-family: 'Roboto Mono';
 }
 
-.header {
+.CSSheader {
   display: block;
   font-family: 'Comfortaa';
   font-weight: bold;
@@ -18,8 +18,12 @@
   border-width: 0 0 3px 0;
   border-color: #ccc;
   border-style: solid;
+  /*background-color: #eee;*/
 }
 
-.header h1 {
+.CSSViewer h1 {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
   padding-bottom: 10px;
+  padding-top: 10px;
 }
