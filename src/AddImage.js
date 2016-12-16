@@ -8,7 +8,6 @@ import htmlModule from './htmlModule'
 class AddImage extends Component {
   constructor(props) {
     super(props);
-    this.updateCssModule = this.updateCssModule.bind(this)
     this.state = {imageUrl: props.imageUrl, style: {height: props.height}}
     this.updateHeight = this.updateHeight.bind(this)
     this.showImageMenu = this.showImageMenu.bind(this)
@@ -23,7 +22,7 @@ class AddImage extends Component {
 
   updateHeight(height) {
     this.state.style.height = String(height) + "vh"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
 
@@ -45,7 +44,7 @@ class AddImage extends Component {
     } else {
       this.state.style["float"] = alignment
     }
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeMargin(size, dimension) {
@@ -76,7 +75,7 @@ class AddImage extends Component {
 
   updateCssModule() {
     cssModule[this.props.className] = this.state.style;
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   render () {

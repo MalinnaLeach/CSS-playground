@@ -9,21 +9,13 @@ class AddText extends Component {
   constructor(props) {
     super(props);
     this.state = {textType: props.textType, content: "Click here to edit text", style: {}}
-    this.renderTextType = this.renderTextType.bind(this)
-    this.updateText = this.updateText.bind(this)
-    this.showTextMenu = this.showTextMenu.bind(this)
-    this.setContent = this.setContent.bind(this)
+    this.updateText = this.updateText.bind(this);
+    this.showTextMenu = this.showTextMenu.bind(this);
+    this.setContent = this.setContent.bind(this);
     this.changeAlignment = this.changeAlignment.bind(this);
-    this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
-    this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
-    this.increaseRightMargin = this.increaseRightMargin.bind(this);
-    this.decreaseRightMargin = this.decreaseRightMargin.bind(this);
-    this.increaseTopMargin = this.increaseTopMargin.bind(this);
-    this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
-    this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
-    this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
     this.changeFontSize = this.changeFontSize.bind(this);
     this.htmlUpdateContent = this.htmlUpdateContent.bind(this);
+    this.changeMargin = this.changeMargin.bind(this);
   }
 
   changeAlignment(alignment) {
@@ -32,120 +24,35 @@ class AddText extends Component {
     } else {
       this.state.style["float"] = alignment
     }
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeFontSize(size) {
     this.state.style["fontSize"] = size + "px"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
-  increaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
+  changeMargin(size, dimension) {
+    if (!!this.state.style["margin" + dimension]) {
+      var margin = parseInt((this.state.style["margin" + dimension].split("%"))[0]);
+      this.state.style["margin" + dimension] = String((margin + size)) + "%"
+      this.props.rerenderWholeApp();
     } else {
-      this.state.style["marginLeft"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginLeft"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginRight"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginRight"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginTop"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginTop"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  increaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin + 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginBottom"] = "5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  decreaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin - 5)) + "%"
-      this.props.updateCssViewer();
-    } else {
-      this.state.style["marginBottom"] = "-5%"
-      this.props.updateCssViewer();
-    }
-  }
-
-  renderTextType () {
-    if (this.props.textType === "h1") {
-      return <h1 className={this.props.className} style={this.state.style}> {this.state.content} </h1>
-    } else {
-      return <p className={this.props.className} style={this.state.style}> {this.state.content} </p>
+      this.state.style["margin" + dimension] = String(size) + "%"
+      this.props.rerenderWholeApp();
     }
   }
 
   updateText (text) {
     this.setState({ content: text })
     this.htmlUpdateContent(htmlModule[0].children, text)
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
     }
 
   setContent() {
     if (this.state.content === "Click here to edit text") {
       return ""
-    } else{
+    } else {
       return this.state.content
     }
   }
@@ -153,10 +60,9 @@ class AddText extends Component {
   showTextMenu (e) {
     const here = this
     Popup.create({
-      content: <TextMenu updateText={here.updateText} content={here.setContent()} fontSize={here.state.style.fontSize} changeAlignment={here.changeAlignment} increaseLeftMargin={here.increaseLeftMargin}
-      decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
-      increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} changeFontSize={here.changeFontSize}/>,
+      content: <TextMenu updateText={here.updateText} content={here.setContent()}
+      fontSize={here.state.style.fontSize} changeAlignment={here.changeAlignment}
+      changeFontSize={here.changeFontSize} changeMargin={here.changeMargin}/>,
       buttons: {right:['ok']}
     })
     if (!e) var e = window.event;
@@ -167,7 +73,7 @@ class AddText extends Component {
   render () {
     return (
       <div className="AddText" onClick={this.showTextMenu}>
-        {this.renderTextType()}
+        <this.props.textType className={this.props.className} style={this.state.style}> {this.state.content} </this.props.textType>
       </div>
     )
   }
@@ -194,14 +100,10 @@ class AddText extends Component {
     }
   }
 
-  updateCssModule() {
-    cssModule[this.props.className] = this.state.style;
-  }
-
   componentDidMount() {
-    this.updateCssModule();
-    this.htmlUpdate(htmlModule[0].children, this.props.parent, this.props.className)
-    this.props.updateCssViewer();
+    cssModule[this.props.className] = this.state.style;
+    this.htmlUpdate(htmlModule, this.props.parent, this.props.className)
+    this.props.rerenderWholeApp();
   };
 
 }

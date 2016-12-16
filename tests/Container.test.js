@@ -10,7 +10,7 @@ import AddImage from '../src/AddImage';
 
 describe('<Container />', () => {
 
-  const wrapper = mount(<Container className="background" style={{backgroundColor: "green", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}} updateCssViewer={() => {}} />);
+  const wrapper = mount(<Container className="background" style={{backgroundColor: "green", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}} rerenderWholeApp={() => {}} />);
 
   it("sets it's colour based on props", () => {
     expect(wrapper.state().style.backgroundColor).toEqual("green");
