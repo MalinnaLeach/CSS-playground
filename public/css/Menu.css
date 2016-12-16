@@ -1,5 +1,6 @@
 .colorpickerdiv {
-  width: 60%;
+  width: 400px;
+  border: 1px dashed cyan;
 }
 
 .sections,
@@ -83,7 +84,7 @@ input {
   width: 120px;
   height: 90px;
 }
-className="resize"
+
 #updown {
   display: inline-block;
   border: 1px dashed red;

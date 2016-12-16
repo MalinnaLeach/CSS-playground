@@ -4,6 +4,7 @@ import 'react-color-picker/index.css';
 import Dropdown from './Dropdown';
 import Positioning from './Positioning';
 import '../public/css/Menu.css';
+import '../public/css/popup.css';
 
 class Menu extends Component {
   constructor(props) {
