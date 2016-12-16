@@ -61,7 +61,7 @@ class Menu extends Component {
             <div className="settingSection">
               <h5>Insert an image:</h5>
               <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
-              <button id="newDiv" className="textbutton" onClick={this.handleNewImage}>Insert image</button>
+              <button id="newImage" className="textbutton" onClick={this.handleNewImage}>Insert image</button>
             </div>
           </div>
 
