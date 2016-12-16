@@ -74,7 +74,7 @@ class Container extends Component {
 
   renderText() {
     return this.state.text.map((text, index) => (
-      <AddText key={index} className={"text"+String(index)} textType={text} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
+      <AddText key={index} className={"text" + String(index)} textType={text} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
     ))
   }
 
@@ -125,7 +125,7 @@ class Container extends Component {
   }
 
   changeBorderRadius(radius) {
-    this.state.style["borderRadius"] = String(radius) + "%";
+    this.state.style["borderRadius"] = String(radius) + "px";
     this.props.rerenderWholeApp();
   }
 
