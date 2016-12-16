@@ -6,6 +6,10 @@ What if you could create code without having it write it?  CSS Playground allows
 
 It is a front-end only app build using React within two weeks by a team of 4 (3 of whom knew nothing about React before we started).  It is tested using Jest and Enzyme.
 
+Currently deployed via this link
+---
+https://css-play.herokuapp.com
+
 Instructions
 ----
 
@@ -24,4 +28,4 @@ To run the test suite:
 $ npm test
 ```
 
-![Screenshot](https://www.dropbox.com/s/re858mb3j8hoeuo/Screen%20Shot%202016-11-12%20at%2020.06.27.png?raw=1)
+![Screenshot](https://www.dropbox.com/s/k87144urxf2ytna/Screen%20Shot%202016-12-16%20at%2016.04.50.png?raw=1)
