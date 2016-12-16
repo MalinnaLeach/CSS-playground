@@ -8,26 +8,35 @@ class Positioning extends Component {
 
   render () {
     return (
-      <div className="Positioning">
-        <h3>Container alignment:</h3>
-        <Dropdown items={["centre", "left", "right"]} eventHandler={this.props.changeAlignment} />
-        <h3>Adjust space to the left:</h3>
-        <button id="+lm" onClick={() => {this.props.changeMargin(5, "Left")}}>+</button>
-        <button id="-lm" onClick={() => {this.props.changeMargin(-5, "Left")}}>-</button>
-        <h3>Adjust space to the right:</h3>
-        <button id="+rm" onClick={() => {this.props.changeMargin(5, "Right")}}>+</button>
-        <button id="-rm" onClick={() => {this.props.changeMargin(-5, "Right")}}>-</button>
-        <h3>Adjust space above:</h3>
-        <button id="+tm" onClick={() => {this.props.changeMargin(5, "Top")}}>+</button>
-        <button id="-tm" onClick={() => {this.props.changeMargin(-5, "Top")}}>-</button>
-        <h3>Adjust space below:</h3>
-        <button id="+bm" onClick={() => {this.props.changeMargin(5, "Bottom")}}>+</button>
-        <button id="-bm" onClick={() => {this.props.changeMargin(-5, "Bottom")}}>-</button>
+      <div className="positioning">
+        <h3>Layout</h3>
+        <div className="settingPosition">
+          <h5>Container alignment:</h5>
+          <Dropdown items={["centre", "left", "right"]} eventHandler={this.props.changeAlignment} />
+        </div>
+        <div className="settingPosition">
+          <h5>Adjust space to the left:</h5>
+          <button id="+lm" onClick={() => {this.props.changeMargin(5, "Left")}}>+</button>
+          <button id="-lm" onClick={() => {this.props.changeMargin(-5, "Left")}}>-</button>
+        </div>
+        <div className="settingPosition">
+          <h5>Adjust space to the right:</h5>
+          <button id="+rm" onClick={() => {this.props.changeMargin(5, "Right")}}>+</button>
+          <button id="-rm" onClick={() => {this.props.changeMargin(-5, "Right")}}>-</button>
+        </div>
+        <div className="settingPosition">
+          <h5>Adjust space above:</h5>
+          <button id="+tm" onClick={() => {this.props.changeMargin(5, "Top")}}>+</button>
+          <button id="-tm" onClick={() => {this.props.changeMargin(-5, "Top")}}>-</button>
+        </div>
+        <div className="settingPosition">
+          <h5>Adjust space below:</h5>
+          <button id="+bm" onClick={() => {this.props.changeMargin(5, "Bottom")}}>+</button>
+          <button id="-bm" onClick={() => {this.props.changeMargin(-5, "Bottom")}}>-</button>
+        </div>
       </div>
     )
   }
-
-
 }
 
 export default Positioning;
