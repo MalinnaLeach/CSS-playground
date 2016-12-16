@@ -1,12 +1,15 @@
 .colorpickerdiv {
   width: 400px;
-  border: 1px dashed cyan;
+  /*border: 1px dashed cyan;*/
 }
 
+.createsection,
 .sections,
 .dimensions,
 .borderstyle,
-.positioning {
+.positioning,
+.textstyle,
+.imagesize {
   border: 2px solid #ccc;
   border-radius: 10px;
   display: block;
@@ -14,7 +17,29 @@
   height: 130px;
   margin: 10px 0;
   padding: 10px;
+  height: 95px;
 }
+
+.imagesize,
+.createsection {
+   height: 90px;
+ }
+
+ .sections {
+
+ }
+
+ .dimensions {
+   height: 60px;
+ }
+
+ .borderstyle {
+   height: 70px;
+ }
+
+ .positioning{
+   height: 110px;
+ }
 
 .settingSection,
 .settingBorder,
@@ -24,21 +49,23 @@
 }
 
 .settingSection {
-  border: 1px dashed green;
-  width: 130px;
+  /*border: 1px dashed purple;*/
+  width: 160px;
 }
 
 .settingBorder {
-  border: 1px dashed green;
-  width: 110px;
+  /*border: 1px dashed pink;*/
+  width: 140px;
 }
 
 .settingPosition {
-  border: 1px dashed green;
+  /*border: 1px dashed green;*/
 }
 
 h3 {
-  margin-top: 5px;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h5 {
@@ -50,50 +77,93 @@ h5 {
   padding: 3px;
 }
 
-.menu .textButton {
+.resize {
+   background-color: red;
+   padding: 1px 10px;
+   border-radius: 3px;
+   border-style: solid;
+   border-width: thin;
+   border-color: #d0d0d0;
+   background-color: #f0f0f0;
+   margin-right: 5px;
+   font-size: 1.2em;
+   cursor: pointer;
+  }
 
+.textbutton {
+   background-color: red;
+   padding: 3px 0px;
+   width: 152px;
+   border-radius: 3px;
+   border-style: solid;
+   border-width: thin;
+   border-color: #d0d0d0;
+   background-color: #f0f0f0;
+   margin-right: 3px;
+   font-size: 0.9em;
+   cursor: pointer;
 }
 
-.dropdown {
-}
+select {
+   background-color: red;
+   padding: 5px 0px;
+   width: 80px;
+   border-radius: 3px;
+   border-style: solid;
+   border-width: thin;
+   border-color: #d0d0d0;
+   background-color: #f0f0f0;
+   margin-right: 3px;
+   font-size: 0.9em;
+   cursor: pointer;
+  }
 
 input {
-
+   padding: 3px 10px;
+   width: 140px;
+   border-radius: 3px;
+   border-style: solid;
+   border-width: thin;
+   border-color: #d0d0d0;
+   margin-right: 3px;
+   margin-bottom: 5px;
+   font-size: 0.9em;
+   width: 130px;
 }
 
 #textDiv {
   display: inline-block;
-  border: 1px dashed red;
+  /*border: 1px dashed red;*/
   width: 160px;
   height: 90px;
 }
 
 #addText {
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #addParagraph {
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #leftright {
   display: inline-block;
-  border: 1px dashed red;
+  /*border: 1px dashed red;*/
   width: 120px;
   height: 90px;
 }
 
 #updown {
   display: inline-block;
-  border: 1px dashed red;
+  /*border: 1px dashed red;*/
   width: 120px;
   height: 90px;
 }
 
 #containerAlignment {
-  border: 1px dashed red;
+  /*border: 1px dashed red;*/
   display: inline-block;
   width: 100px;
   height: 90px;
@@ -101,33 +171,49 @@ input {
 
 #leftSpace {
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #rightSpace{
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #upSpace{
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #downSpace{
   display: block;
-  border: 1px dashed blue;
+  /*border: 1px dashed blue;*/
 }
 
 #borderWidthDiv {
-  width: 70px;
+  width: 80px;
 }
 
 #borderStyleDiv {
-  width: 70px;
+  width: 100px;
+}
+
+#borderRadiusDiv {
+  width: 160px;
+}
+
+#borderColorDropdown {
+  width: 90px;
+}
+
+#widthDiv {
+  width: 180px;
+}
+
+#heightDiv {
+  width: 170px;
 }
 
 
-.positioning {
+.mm-popup__box__body {
 
 }

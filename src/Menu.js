@@ -32,8 +32,11 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
-          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-          <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
+          <div className="createsection">
+             <h3>Create section</h3>
+             <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+             <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new section</button>
+           </div>
         </div>
       )
     } else {
@@ -49,7 +52,7 @@ class Menu extends Component {
             <h3>Add content</h3>
             <div className="settingSection">
               <h5>Create new section:</h5>
-              <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+              <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
               <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new section</button>
             </div>
             <div id="textDiv">
@@ -70,11 +73,11 @@ class Menu extends Component {
 
           <div className="dimensions">
             <h3>Set the dimensions</h3>
-            <div className="settingSection">
+            <div id="widthDiv" className="settingSection">
               <h5>Section width:</h5>
               <input id="divWidthInput" type="number" name="width" placeholder="Set section width" onChange={this.setDivWidth}/>%
             </div>
-            <div className="settingSection">
+            <div id="heightDiv" className="settingSection">
               <h5>Section height:</h5>
               <input id="divHeightInput" type="number" name="height" placeholder="Set section height" onChange={this.setDivHeight}/>%
             </div>
@@ -88,20 +91,20 @@ class Menu extends Component {
             <h3>Border</h3>
             <div id="borderWidthDiv" className="settingBorder">
               <h5>Width:</h5>
-              <button id="increaseBorderWidth" className="resizebutton" onClick={this.increaseBorderWidth}>+</button>
-              <button id="decreaseBorderWidth" className="resizebutton" onClick={this.decreaseBorderWidth}>-</button>
+              <button id="increaseBorderWidth" className="resize" onClick={this.increaseBorderWidth}>+</button>
+              <button id="decreaseBorderWidth" className="resize" onClick={this.decreaseBorderWidth}>-</button>
             </div>
             <div id="borderStyleDiv" className="settingBorder">
               <h5>Style:</h5>
-              <Dropdown id="borderStyleDropdown" items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+              <Dropdown id="borderStyleDropdown" items={["Solid", "Dashed", "Dotted"]} eventHandler={this.props.changeBorderStyle}/>
             </div>
-            <div className="settingBorder">
+            <div id="borderRadiusDiv" className="settingBorder">
               <h5>Radius:</h5>
-              <input id="borderRadiusDropdown" id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
+              <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
             </div>
-            <div className="settingBorder">
+            <div id="borderColorDropdown" className="settingBorder">
               <h5>Color:</h5>
-              <Dropdown id="borderColorDropdown"items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
+              <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
             </div>
           </div>
         </div>
