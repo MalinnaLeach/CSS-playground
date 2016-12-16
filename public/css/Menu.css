@@ -18,9 +18,22 @@
 .settingSection,
 .settingBorder,
 .settingPosition {
-  width: 150px;
   margin: 1px;
   float: left;
+}
+
+.settingSection {
+  border: 1px dashed green;
+  width: 130px;
+}
+
+.settingBorder {
+  border: 1px dashed green;
+  width: 110px;
+}
+
+.settingPosition {
+  border: 1px dashed green;
 }
 
 h3 {
@@ -40,9 +53,80 @@ h5 {
 
 }
 
-Dropdown {
+.dropdown {
 }
 
 input {
+
+}
+
+#textDiv {
+  display: inline-block;
+  border: 1px dashed red;
+  width: 160px;
+  height: 90px;
+}
+
+#addText {
+  display: block;
+  border: 1px dashed blue;
+}
+
+#addParagraph {
+  display: block;
+  border: 1px dashed blue;
+}
+
+#leftright {
+  display: inline-block;
+  border: 1px dashed red;
+  width: 120px;
+  height: 90px;
+}
+className="resize"
+#updown {
+  display: inline-block;
+  border: 1px dashed red;
+  width: 120px;
+  height: 90px;
+}
+
+#containerAlignment {
+  border: 1px dashed red;
+  display: inline-block;
+  width: 100px;
+  height: 90px;
+}
+
+#leftSpace {
+  display: block;
+  border: 1px dashed blue;
+}
+
+#rightSpace{
+  display: block;
+  border: 1px dashed blue;
+}
+
+#upSpace{
+  display: block;
+  border: 1px dashed blue;
+}
+
+#downSpace{
+  display: block;
+  border: 1px dashed blue;
+}
+
+#borderWidthDiv {
+  width: 70px;
+}
+
+#borderStyleDiv {
+  width: 70px;
+}
+
+
+.positioning {
 
 }
