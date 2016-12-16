@@ -31,8 +31,11 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
-          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-          <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
+          <div className="createsection">
+            <h3>Create section</h3>
+            <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+            <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
+          </div>
         </div>
       )
     } else {

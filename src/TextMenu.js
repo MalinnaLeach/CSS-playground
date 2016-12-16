@@ -53,10 +53,13 @@ class TextMenu extends Component {
   render () {
     return (
       <div className="textInput">
-        <p>Your text: </p>
-        <input id="textInput" type="text" placeholder={this.placeholderCheck()} defaultValue={this.valueCheck()} onChange={this.handleText} />
-        <p>Change font size: </p>
-        <input id="fontSizeInput" type="text" placeholder={this.sizePlaceCheck()} defaultValue={this.sizeCheck()} onChange={this.handleFontSize} /> px
+        <div className="textstyle">
+          <h3>Text</h3>
+          <h5>Your text:</h5>
+          <input id="textInput" type="text" placeholder={this.placeholderCheck()} defaultValue={this.valueCheck()} onChange={this.handleText} />
+          <h5>Change font size:</h5>
+          <input id="fontSizeInput" type="text" placeholder={this.sizePlaceCheck()} defaultValue={this.sizeCheck()} onChange={this.handleFontSize} /> px
+        </div>
         <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
       </div>
     )

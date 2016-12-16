@@ -2,10 +2,13 @@
   width: 60%;
 }
 
+.createsection,
 .sections,
 .dimensions,
 .borderstyle,
-.positioning {
+.positioning,
+.textstyle,
+.imagesize {
   border: 2px solid #ccc;
   border-radius: 10px;
   display: block;
@@ -13,6 +16,11 @@
   height: 130px;
   margin: 10px 0;
   padding: 10px;
+}
+
+.imagesize,
+.createsection {
+  height: 90px;
 }
 
 .settingSection,
