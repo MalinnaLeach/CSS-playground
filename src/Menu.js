@@ -31,7 +31,7 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
-          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+          <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
           <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
         </div>
       )
@@ -101,6 +101,24 @@ class Menu extends Component {
               <Dropdown id="borderColorDropdown"items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
             </div>
           </div>
+          <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
+          <button id="newIMage" onClick={this.handleNewImage}>Insert image</button>
+          <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
+          <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
+          <input id="divWidthInput" type="number" name="width" placeholder="Set section Width" onChange={this.setDivWidth}/>%
+          <input id="divHeightInput" type="number" name="height" placeholder="Set section Height" onChange={this.setDivHeight}/>%
+          <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
+          <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
+          <h3>Change border width:</h3>
+          <button id="increase" onClick={this.increaseBorderWidth}>+</button>
+          <button id="decrease" onClick={this.decreaseBorderWidth}>-</button>
+          <h3>Change border style:</h3>
+          <Dropdown items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+          <h3>Change border radius:</h3>
+          <input id="borderRadius" type="number" name="radius" placeholder="Border radius" onChange={this.setBorderRadius}/>
+          <h3>Change border color:</h3>
+          <Dropdown items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
+          <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
         </div>
       );
     }
