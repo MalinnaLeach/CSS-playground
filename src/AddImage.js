@@ -51,10 +51,10 @@ class AddImage extends Component {
     if (!!this.state.style["margin" + dimension]) {
       var margin = parseInt((this.state.style["margin" + dimension].split("%"))[0]);
       this.state.style["margin" + dimension] = String((margin + size)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["margin" + dimension] = String(size) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
