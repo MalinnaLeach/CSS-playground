@@ -1,0 +1,48 @@
+.colorpickerdiv {
+  width: 60%;
+}
+
+.sections,
+.dimensions,
+.borderstyle,
+.positioning {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: block;
+  width: 95%;
+  height: 130px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.settingSection,
+.settingBorder,
+.settingPosition {
+  width: 150px;
+  margin: 1px;
+  float: left;
+}
+
+h3 {
+  margin-top: 5px;
+}
+
+h5 {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.menu .plusButton {
+  padding: 3px;
+}
+
+.menu .textButton {
+
+}
+
+Dropdown {
+}
+
+input {
+
+}
