@@ -45,10 +45,7 @@ class Container extends Component {
       changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
       setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
-      addChildImage={here.addChildImage} changeRelative={here.changeRelative} increaseLeftMargin={here.increaseLeftMargin}
-      decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
-      increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} updateDivSize={here.updateDivSize} changeBorderWidth={here.changeBorderWidth} changeMargin={here.changeMargin}/>,
+      addChildImage={here.addChildImage} changeRelative={here.changeRelative} updateDivSize={here.updateDivSize} changeBorderWidth={here.changeBorderWidth} changeMargin={here.changeMargin}/>,
       buttons: {
         right: ['ok']
       }
