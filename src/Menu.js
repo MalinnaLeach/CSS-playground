@@ -20,14 +20,6 @@ class Menu extends Component {
     this.setBorderRadius = this.setBorderRadius.bind(this);
     this.setDivWidth = this.setDivWidth.bind(this);
     this.setDivHeight = this.setDivHeight.bind(this);
-    this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
-    this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
-    this.increaseRightMargin = this.increaseRightMargin.bind(this);
-    this.decreaseRightMargin = this.decreaseRightMargin.bind(this);
-    this.increaseTopMargin = this.increaseTopMargin.bind(this);
-    this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
-    this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
-    this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
   }
 
   render () {
@@ -52,7 +44,6 @@ class Menu extends Component {
               {this.state.color}
             </div>
           </div>
-
           <div className="sections">
             <h3>Add content</h3>
             <div className="settingSection">
@@ -87,11 +78,7 @@ class Menu extends Component {
           </div>
 
           <div className="settingPositioning">
-            <Positioning changeAlignment={this.props.changeAlignment} changeRelative={this.props.changeRelative}
-            increaseLeftMargin={this.props.increaseLeftMargin} decreaseLeftMargin = {this.props.decreaseLeftMargin}
-            increaseRightMargin={this.props.increaseRightMargin} decreaseRightMargin={this.props.decreaseRightMargin}
-            increaseTopMargin={this.props.increaseTopMargin} decreaseTopMargin = {this.props.decreaseTopMargin}
-            increaseBottomMargin={this.props.increaseBottomMargin} decreaseBottomMargin = {this.props.decreaseBottomMargin} />
+            <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
           </div>
 
           <div className="borderstyle">
@@ -114,9 +101,6 @@ class Menu extends Component {
               <Dropdown id="borderColorDropdown"items={["Black", "Dark grey", "Light grey", "Transparent"]} eventHandler={this.props.changeBorderColor}/>
             </div>
           </div>
-
-
-
         </div>
       );
     }
@@ -170,39 +154,6 @@ class Menu extends Component {
   setDivHeight(e) {
     this.props.updateDivSize(e.target.value, "height");
   }
-
-  increaseLeftMargin() {
-    this.props.changeMargin(5, "Left")
-  }
-
-  decreaseLeftMargin() {
-    this.props.changeMargin(-5, "Left")
-  }
-
-  increaseRightMargin() {
-    this.props.changeMargin(5, "Right")
-  }
-
-  decreaseRightMargin() {
-    this.props.changeMargin(-5, "Right")
-  }
-
-  increaseTopMargin() {
-    this.props.changeMargin(5, "Top")
-  }
-
-  decreaseTopMargin() {
-    this.props.changeMargin(-5, "Top")
-  }
-
-  increaseBottomMargin() {
-    this.props.changeMargin(5, "Bottom")
-  }
-
-  decreaseBottomMargin() {
-    this.props.changeMargin(-5, "Bottom")
-  }
-
 
 }
 

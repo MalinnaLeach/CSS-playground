@@ -37,6 +37,11 @@ class Container extends Component {
     );
   }
 
+  componentDidMount() {
+    cssModule[this.state.className] = this.state.style;
+    this.props.rerenderWholeApp();
+  }
+
   showMenu(e) {
     const here = this
     Popup.create({
@@ -45,7 +50,7 @@ class Container extends Component {
       changeBorderRadius={here.changeBorderRadius} changeBorderColor={here.changeBorderColor}
       setDivWidth={here.setDivWidth} setDivHeight={here.setDivHeight}
       changeBorderStyle={here.changeBorderStyle} changeAlignment={here.changeAlignment} addChildDiv={here.addChildDiv} addChildText={here.addChildText}
-      addChildImage={here.addChildImage} changeRelative={here.changeRelative} updateDivSize={here.updateDivSize} changeBorderWidth={here.changeBorderWidth} changeMargin={here.changeMargin}/>,
+      addChildImage={here.addChildImage} updateDivSize={here.updateDivSize} changeBorderWidth={here.changeBorderWidth} changeMargin={here.changeMargin}/>,
       buttons: {
         right: ['ok']
       }
@@ -57,19 +62,19 @@ class Container extends Component {
 
   renderDiv() {
     return this.state.containers.map(div => (
-      <Container key={div} className={div} updateCssViewer={this.props.updateCssViewer} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
+      <Container key={div} className={div} rerenderWholeApp={this.props.rerenderWholeApp} style={{backgroundColor: "inherit", width: "50%", height: "50%", borderWidth: "3px", borderStyle: "solid", borderColor: "#000", margin: "auto", borderRadius: "0px"}}/>
     ))
   }
 
   renderImage() {
     return this.state.images.map((url, index) => (
-      <AddImage key={index} imageUrl={url} height="88vh" className={"img"+String(index)} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
+      <AddImage key={index} imageUrl={url} height="88vh" className={"img"+String(index)} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
     ))
   }
 
   renderText() {
     return this.state.text.map((text, index) => (
-      <AddText key={index} className={"text"+String(index)} textType={text} parent={this.state.className} updateCssViewer={this.props.updateCssViewer}/>
+      <AddText key={index} className={"text"+String(index)} textType={text} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
     ))
   }
 
@@ -87,12 +92,12 @@ class Container extends Component {
     cssModule[className] = {}
     this.htmlUpdate(htmlModule, this.props.className, className)
     this.setState({ containers: [...this.state.containers, className]});
-    this.props.updateCssViewer()
+    this.props.rerenderWholeApp()
   }
 
   addChildImage(url) {
     this.setState({images: [...this.state.images, url]});
-    this.props.updateCssViewer()
+    this.props.rerenderWholeApp()
   }
 
   addChildText(textType) {
@@ -101,27 +106,27 @@ class Container extends Component {
 
 
 ///////////////////// CSS ALTERATION FUNCTIONS ////////////////////////
+
   onDrag(color) {
     this.state.style["backgroundColor"] = color;
     cssModule[this.state.className]["backgroundColor"] = color;
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
-
 
   changeBorderWidth(n) {
     var thickness = parseInt((this.state.style["borderWidth"].split("px"))[0]);
     this.state.style["borderWidth"] = String((thickness + n)) + "px"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeBorderStyle(style) {
     this.state.style["borderStyle"] = style;
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeBorderRadius(radius) {
     this.state.style["borderRadius"] = String(radius) + "%";
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeBorderColor(color) {
@@ -135,12 +140,12 @@ class Container extends Component {
       color = "#000"
     }
     this.state.style["borderColor"] = color;
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   updateDivSize(size, dimension) {
     this.state.style[dimension] = String(size) + "%"
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeAlignment(alignment) {
@@ -149,32 +154,23 @@ class Container extends Component {
     } else {
       this.state.style["float"] = alignment
     }
-    this.props.updateCssViewer();
+    this.props.rerenderWholeApp();
   }
 
   changeMargin(size, dimension) {
     if (!!this.state.style["margin" + dimension]) {
       var margin = parseInt((this.state.style["margin" + dimension].split("%"))[0]);
       this.state.style["margin" + dimension] = String((margin + size)) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     } else {
       this.state.style["margin" + dimension] = String(size) + "%"
-      this.props.updateCssViewer();
+      this.props.rerenderWholeApp();
     }
   }
 
 
 ///////////////////////////////////////////////////////////////////////
 
-  updateCssModule() {
-    cssModule[this.state.className] = this.state.style;
-    this.props.updateCssViewer();
-  }
-
-  componentDidMount() {
-    this.updateCssModule();
-
-  };
 }
 
 export default Container;

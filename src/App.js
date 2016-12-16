@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {view: 'css'};
-    this.updateCssViewer = this.updateCssViewer.bind(this);
+    this.rerenderWholeApp = this.rerenderWholeApp.bind(this);
     this.updateView = this.updateView.bind(this);
     this.showView = this.showView.bind(this);
   }
@@ -33,13 +33,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header updateView={this.updateView}/>
-        <Container key="background" className="background" style={{backgroundColor: "white", height: "88vh", textAlign: "center"}} updateCssViewer={this.updateCssViewer}/>
+        <Container key="background" className="background" style={{backgroundColor: "white", height: "88vh", textAlign: "center", fontFamily: "sans-serif"}} rerenderWholeApp={this.rerenderWholeApp}/>
         {this.showView()}
       </div>
     );
   };
 
-  updateCssViewer() {
+  rerenderWholeApp() {
     this.forceUpdate();
   }
 }

@@ -4,7 +4,6 @@ import Dropdown from '../src/Dropdown';
 class Positioning extends Component {
   constructor(props) {
     super(props);
-
   }
 
   render () {
@@ -17,29 +16,27 @@ class Positioning extends Component {
         </div>
         <div className="settingPosition">
           <h5>Adjust space to the left:</h5>
-          <button id="+lm" className="resizebutton" onClick={this.props.increaseLeftMargin}>+</button>
-          <button id="-lm" className="resizebutton" onClick={this.props.decreaseLeftMargin}>-</button>
+          <button id="+lm" onClick={() => {this.props.changeMargin(5, "Left")}}>+</button>
+          <button id="-lm" onClick={() => {this.props.changeMargin(-5, "Left")}}>-</button>
         </div>
         <div className="settingPosition">
           <h5>Adjust space to the right:</h5>
-          <button id="+rm" className="resizebutton" onClick={this.props.increaseRightMargin}>+</button>
-          <button id="-rm" className="resizebutton" onClick={this.props.decreaseRightMargin}>-</button>
+          <button id="+rm" onClick={() => {this.props.changeMargin(5, "Right")}}>+</button>
+          <button id="-rm" onClick={() => {this.props.changeMargin(-5, "Right")}}>-</button>
         </div>
         <div className="settingPosition">
           <h5>Adjust space above:</h5>
-          <button id="+tm" className="resizebutton" onClick={this.props.increaseTopMargin}>+</button>
-          <button id="-tm" className="resizebutton" onClick={this.props.decreaseTopMargin}>-</button>
+          <button id="+tm" onClick={() => {this.props.changeMargin(5, "Top")}}>+</button>
+          <button id="-tm" onClick={() => {this.props.changeMargin(-5, "Top")}}>-</button>
         </div>
         <div className="settingPosition">
           <h5>Adjust space below:</h5>
-          <button id="+bm" className="resizebutton" onClick={this.props.increaseBottomMargin}>+</button>
-          <button id="-bm" className="resizebutton" onClick={this.props.decreaseBottomMargin}>-</button>
+          <button id="+bm" onClick={() => {this.props.changeMargin(5, "Bottom")}}>+</button>
+          <button id="-bm" onClick={() => {this.props.changeMargin(-5, "Bottom")}}>-</button>
         </div>
       </div>
     )
   }
-
-
 }
 
 export default Positioning;
