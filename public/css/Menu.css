@@ -1,5 +1,4 @@
 .colorpickerdiv {
-  border: 1px dashed blue;
   width: 60%;
 }
 
@@ -24,13 +23,17 @@
   float: left;
 }
 
-h3,
+h3 {
+  margin-top: 5px;
+}
+
 h5 {
   margin: 0;
+  margin-bottom: 2px;
 }
 
 .menu .plusButton {
-
+  padding: 3px;
 }
 
 .menu .textButton {

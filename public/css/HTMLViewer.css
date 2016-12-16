@@ -1,7 +1,8 @@
 .HTMLViewer {
   float: right;
   height: 88vh;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll;
   width: 20%;
   margin-right: 25px;
   border-width: 3px 3px 3px 2px;
