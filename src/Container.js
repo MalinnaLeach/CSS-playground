@@ -125,7 +125,7 @@ class Container extends Component {
   }
 
   changeBorderRadius(radius) {
-    this.state.style["borderRadius"] = String(radius) + "%";
+    this.state.style["borderRadius"] = String(radius) + "px";
     this.props.rerenderWholeApp();
   }
 

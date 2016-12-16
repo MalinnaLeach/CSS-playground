@@ -54,7 +54,7 @@ describe('<Container />', () => {
 
   it("can change border radius", () => {
     wrapper.instance().changeBorderRadius("10");
-    expect(wrapper.state().style.borderRadius).toEqual("10%")
+    expect(wrapper.state().style.borderRadius).toEqual("10px")
   })
 
   it("can change border color", () => {
