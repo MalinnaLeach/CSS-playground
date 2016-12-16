@@ -13,14 +13,7 @@ class AddImage extends Component {
     this.showImageMenu = this.showImageMenu.bind(this)
     this.setHeight = this.setHeight.bind(this)
     this.changeAlignment = this.changeAlignment.bind(this);
-    this.increaseLeftMargin = this.increaseLeftMargin.bind(this);
-    this.decreaseLeftMargin = this.decreaseLeftMargin.bind(this);
-    this.increaseRightMargin = this.increaseRightMargin.bind(this);
-    this.decreaseRightMargin = this.decreaseRightMargin.bind(this);
-    this.increaseTopMargin = this.increaseTopMargin.bind(this);
-    this.decreaseTopMargin = this.decreaseTopMargin.bind(this);
-    this.increaseBottomMargin = this.increaseBottomMargin.bind(this);
-    this.decreaseBottomMargin = this.decreaseBottomMargin.bind(this);
+    this.changeMargin = this.changeMargin.bind(this);
   }
 
   setHeight() {
@@ -36,9 +29,7 @@ class AddImage extends Component {
   showImageMenu (e) {
     const here = this
     Popup.create({
-      content: <ImageMenu updateHeight={here.updateHeight} height={here.setHeight()} changeAlignment={here.changeAlignment} increaseLeftMargin={here.increaseLeftMargin} decreaseLeftMargin={here.decreaseLeftMargin} increaseRightMargin={here.increaseRightMargin} decreaseRightMargin={here.decreaseRightMargin}
-      increaseTopMargin={here.increaseTopMargin} decreaseTopMargin={here.decreaseTopMargin} increaseBottomMargin={here.increaseBottomMargin}
-      decreaseBottomMargin={here.decreaseBottomMargin} />,
+      content: <ImageMenu updateHeight={here.updateHeight} height={here.setHeight()} changeAlignment={here.changeAlignment} changeMargin={here.changeMargin}/>,
       buttons: {right:['ok']}
     })
     if (!e) var e = window.event;
@@ -56,91 +47,14 @@ class AddImage extends Component {
     this.props.rerenderWholeApp();
   }
 
-  increaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin + 5)) + "%"
-      this.props.rerenderWholeApp();
+  changeMargin(size, dimension) {
+    if (!!this.state.style["margin" + dimension]) {
+      var margin = parseInt((this.state.style["margin" + dimension].split("%"))[0]);
+      this.state.style["margin" + dimension] = String((margin + size)) + "%"
+      this.props.updateCssViewer();
     } else {
-      this.state.style["marginLeft"] = "5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  decreaseLeftMargin() {
-    if (!!this.state.style["marginLeft"]) {
-      var margin = parseInt((this.state.style["marginLeft"].split("%"))[0]);
-      this.state.style["marginLeft"] = String((margin - 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginLeft"] = "-5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  increaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin + 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginRight"] = "5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  decreaseRightMargin() {
-    if (!!this.state.style["marginRight"]) {
-      var margin = parseInt((this.state.style["marginRight"].split("%"))[0]);
-      this.state.style["marginRight"] = String((margin - 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginRight"] = "-5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  increaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin + 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginTop"] = "5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  decreaseTopMargin() {
-    if (!!this.state.style["marginTop"]) {
-      var margin = parseInt((this.state.style["marginTop"].split("%"))[0]);
-      this.state.style["marginTop"] = String((margin - 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginTop"] = "-5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  increaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin + 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginBottom"] = "5%"
-      this.props.rerenderWholeApp();
-    }
-  }
-
-  decreaseBottomMargin() {
-    if (!!this.state.style["marginBottom"]) {
-      var margin = parseInt((this.state.style["marginBottom"].split("%"))[0]);
-      this.state.style["marginBottom"] = String((margin - 5)) + "%"
-      this.props.rerenderWholeApp();
-    } else {
-      this.state.style["marginBottom"] = "-5%"
-      this.props.rerenderWholeApp();
+      this.state.style["margin" + dimension] = String(size) + "%"
+      this.props.updateCssViewer();
     }
   }
 
