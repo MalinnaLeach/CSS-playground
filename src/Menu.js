@@ -30,8 +30,8 @@ class Menu extends Component {
           <div style={colourBoxStyle}>
             {this.state.color}
           </div>
-          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-          <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
+          <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
+          <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
         </div>
       )
     } else {
@@ -43,10 +43,10 @@ class Menu extends Component {
           </div>
           <input id="imageInput" type="text" name="imageUrl" placeholder="Image url" onChange={this.handleImageUrl}/>
           <button id="newIMage" onClick={this.handleNewImage}>Insert image</button>
-          <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
-          <button id="newDiv" onClick={this.handleNewDiv}>Create new div</button>
-          <input id="divWidthInput" type="number" name="width" placeholder="Set div Width" onChange={this.setDivWidth}/>%
-          <input id="divHeightInput" type="number" name="height" placeholder="Set div Height" onChange={this.setDivHeight}/>%
+          <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
+          <button id="newDiv" onClick={this.handleNewDiv}>Create new section</button>
+          <input id="divWidthInput" type="number" name="width" placeholder="Set section Width" onChange={this.setDivWidth}/>%
+          <input id="divHeightInput" type="number" name="height" placeholder="Set section Height" onChange={this.setDivHeight}/>%
           <button id="newTitle" onClick={this.handleNewTitle}>Add title</button>
           <button id="newParagraph" onClick={this.handleNewParagraph}>Add paragraph</button>
           <h3>Change border width:</h3>
