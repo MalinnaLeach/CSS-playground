@@ -48,7 +48,7 @@ class Menu extends Component {
             <h3>Add content</h3>
             <div className="settingSection">
               <h5>Create new section:</h5>
-              <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+              <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
               <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new section</button>
             </div>
             <div className="settingSection">
@@ -85,12 +85,12 @@ class Menu extends Component {
             <h3>Border</h3>
             <div className="settingBorder">
               <h5>Change border width:</h5>
-              <button id="increaseBorderWidth" className="resizebutton" onClick={this.increaseBorderWidth}>+</button>
-              <button id="decreaseBorderWidth" className="resizebutton" onClick={this.decreaseBorderWidth}>-</button>
+              <button id="increaseBorderWidth" className="resize" onClick={this.increaseBorderWidth}>+</button>
+              <button id="decreaseBorderWidth" className="resize" onClick={this.decreaseBorderWidth}>-</button>
             </div>
             <div className="settingBorder">
               <h5>Change border style:</h5>
-              <Dropdown id="borderStyleDropdown" items={["solid", "dashed", "dotted"]} eventHandler={this.props.changeBorderStyle}/>
+              <Dropdown id="borderStyleDropdown" items={["Solid", "Dashed", "Dotted"]} eventHandler={this.props.changeBorderStyle}/>
             </div>
             <div className="settingBorder">
               <h5>Change border radius:</h5>

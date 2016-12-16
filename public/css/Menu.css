@@ -18,31 +18,71 @@
 .settingSection,
 .settingBorder,
 .settingPosition {
-  width: 150px;
+  width: 170px;
   margin: 1px;
   float: left;
 }
 
 h3 {
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 h5 {
+  font-size: 0.9em;
   margin: 0;
   margin-bottom: 2px;
 }
 
-.menu .plusButton {
-  padding: 3px;
+.resize {
+  background-color: red;
+  padding: 1px 10px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #d0d0d0;
+  background-color: #f0f0f0;
+  margin-right: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
-.menu .textButton {
-
+.textbutton {
+  background-color: red;
+  padding: 3px 0px;
+  width: 152px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #d0d0d0;
+  background-color: #f0f0f0;
+  margin-right: 3px;
+  font-size: 0.9em;
+  cursor: pointer;
 }
 
-Dropdown {
+select {
+  background-color: red;
+  padding: 5px 0px;
+  width: 152px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #d0d0d0;
+  background-color: #f0f0f0;
+  margin-right: 3px;
+  font-size: 0.9em;
+  cursor: pointer;
 }
 
 input {
-
+  padding: 3px 10px;
+  width: 140px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #d0d0d0;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  width: 130px;
 }
