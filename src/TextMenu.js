@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Positioning from './Positioning';
+import '../public/css/Menu.css';
 
 class TextMenu extends Component {
   constructor (props) {
@@ -46,20 +47,20 @@ class TextMenu extends Component {
     if (!!this.props.fontSize) {
       return null
   } else {
-      return "Input font size in pixels"
+      return "Input font size"
     }
   }
 
   render () {
     return (
       <div className="textInput">
-      <div className="textstyle">
+        <div className="textstyle">
           <h3>Text</h3>
           <h5>Your text:</h5>
           <input id="textInput" type="text" placeholder={this.placeholderCheck()} defaultValue={this.valueCheck()} onChange={this.handleText} />
           <h5>Change font size:</h5>
           <input id="fontSizeInput" type="text" placeholder={this.sizePlaceCheck()} defaultValue={this.sizeCheck()} onChange={this.handleFontSize} /> px
-       </div>
+        </div>
         <Positioning changeAlignment={this.props.changeAlignment} changeMargin={this.props.changeMargin} />
       </div>
     )

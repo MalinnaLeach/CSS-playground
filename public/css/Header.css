@@ -49,3 +49,15 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@media only screen and (max-width: 500px) {
+  .header h1 {
+    font-size: 3em;
+  }
+
+  .header button {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+}

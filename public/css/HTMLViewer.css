@@ -1,10 +1,9 @@
 .HTMLViewer {
   float: right;
-  height: 88vh;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  height: 80vh;
+  overflow: auto;
   width: 20%;
-  margin-right: 25px;
+  margin-right: 1.5%;
   border-width: 3px 3px 3px 2px;
   border-color: #ccc;
   border-style: solid;
@@ -16,7 +15,8 @@
   font-family: 'Comfortaa';
   font-weight: bold;
   text-align: center;
-  border-width: 0 0 3px 0;
+  border-width: 0 3px 3px 0;
+  width: 105%;
   border-color: #ccc;
   border-style: solid;
 }
@@ -29,12 +29,18 @@
 }
 
 .HTMLViewer p {
-  line-height: 65%;
-  padding-left: 10px;
+  line-height: 0%;
+  padding-left: 5px;
+  width: 800px;
+  float: left;
+  font-size: 14px;
 }
 
-@media screen and (max-width: 1500px) and (min-width: 1000px) {
-  .HTMLViewer {
-    width: 29%;
-  }
+@media only screen and (max-width: 500px) {
+    .HTMLViewer {
+      width: 25%
+    }
+    .HTMLViewer p {
+      font-size: 8px;
+    }
 }

@@ -1,6 +1,5 @@
 .colorpickerdiv {
   width: 400px;
-  /*border: 1px dashed cyan;*/
 }
 
 .createsection,
@@ -14,7 +13,7 @@
   border-radius: 10px;
   display: block;
   width: 95%;
-  height: 130px;
+  height: 130px !important;
   margin: 10px 0;
   padding: 10px;
   height: 95px;
@@ -23,10 +22,6 @@
 .imagesize,
 .createsection {
    height: 90px;
- }
-
- .sections {
-
  }
 
  .dimensions {
@@ -49,17 +44,12 @@
 }
 
 .settingSection {
-  /*border: 1px dashed purple;*/
   width: 160px;
+  float: left;
 }
 
 .settingBorder {
-  /*border: 1px dashed pink;*/
   width: 140px;
-}
-
-.settingPosition {
-  /*border: 1px dashed green;*/
 }
 
 h3 {
@@ -102,6 +92,7 @@ h5 {
    margin-right: 3px;
    font-size: 0.9em;
    cursor: pointer;
+   margin-bottom: 5px;
 }
 
 select {
@@ -116,6 +107,7 @@ select {
    margin-right: 3px;
    font-size: 0.9em;
    cursor: pointer;
+   margin-bottom: 5px;
   }
 
 input {
@@ -133,37 +125,31 @@ input {
 
 #textDiv {
   display: inline-block;
-  /*border: 1px dashed red;*/
   width: 160px;
   height: 90px;
 }
 
 #addText {
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #addParagraph {
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #leftright {
   display: inline-block;
-  /*border: 1px dashed red;*/
   width: 120px;
   height: 90px;
 }
 
 #updown {
   display: inline-block;
-  /*border: 1px dashed red;*/
   width: 120px;
   height: 90px;
 }
 
 #containerAlignment {
-  /*border: 1px dashed red;*/
   display: inline-block;
   width: 100px;
   height: 90px;
@@ -171,22 +157,18 @@ input {
 
 #leftSpace {
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #rightSpace{
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #upSpace{
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #downSpace{
   display: block;
-  /*border: 1px dashed blue;*/
 }
 
 #borderWidthDiv {
@@ -213,7 +195,72 @@ input {
   width: 170px;
 }
 
+@media only screen and (max-width: 500px) {
+  .react-color-picker__saturation-spectrum {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  .react-color-picker__hue-spectrum {
+    height: 200px !important;
+  }
 
-.mm-popup__box__body {
+  .textbutton {
+     width: 70px;
+     margin-right: 3px;
+     font-size: 0.7em;
+  }
+
+  .buttonDiv button {
+    width: 91px;
+    font-size: 0.6em;
+  }
+
+  select {
+     width: 70px;
+     margin-right: 3px;
+     font-size: 0.7em;
+    }
+
+  input {
+     width: 75px;
+     margin-right: 3px;
+     margin-bottom: 5px;
+     font-size: 0.6em;
+  }
+
+  .settingSection {
+    width: 80px;
+    margin-right: 2px;
+  }
+
+  #containerAlignment {
+    width: 70px;
+  }
+
+  .settingSection input {
+    width: 55px;
+  }
+
+  .createsection,
+  .sections,
+  .dimensions,
+  .borderstyle,
+  .positioning,
+  .textstyle,
+  .imagesize {
+    height: 150px !important;
+  }
+
+  #textDiv {
+    width: 70px;
+    margin-right: 2px;
+  }
+
+  #leftright,
+  #updown {
+    width: 85px;
+  }
+
+
 
 }

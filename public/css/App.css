@@ -4,12 +4,12 @@
   border-width: 3px;
   border-color: black;
   border-style: solid;
-  height: 88vh;
+  height: 80vh;
   width: 75%;
-  margin-left: 25px;
+  margin-left: 1%;
 }
 
-@media screen and (max-width: 1500px) and (min-width: 1000px) {
+@media only screen and (max-width: 500px) {
   .background {
     width: 65%;
   }
