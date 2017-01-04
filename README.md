@@ -2,9 +2,9 @@
 
 Introduction
 -------
-What if you could create code without having it write it?  CSS Playground allows you to do just that!  This tool allows you to make changes to a simple web page and see live changes to the HTML and CSS code that you are creating - great for coding beginners to experiment and learn.  You can also download the code you have created in file format, so can also be used as a time-saving shortcut by experienced developers.
+What if you could create code without having to write it?  CSS Playground allows you to do just that!  With this tool, you can design a simple web page and see live changes to the HTML and CSS code that you are creating - great for coding beginners to experiment and learn.  You can download the code you have created in file format, so it can also be used as a time-saving shortcut by experienced developers.
 
-It is a front-end only app build using React within two weeks by a team of 4 (3 of whom knew nothing about React before we started).  It is tested using Jest and Enzyme.
+It is a front-end only app built using React within two weeks by a team of 4 (3 of whom knew nothing about React before we started).  It is tested using Jest and Enzyme.
 
 Currently deployed via this link
 ---

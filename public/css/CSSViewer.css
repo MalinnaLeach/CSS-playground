@@ -43,4 +43,7 @@
     .CSSViewer {
       width: 25%;;
     }
+    .CSSViewer h1 {
+      font-size: 15px;
+    }
 }

@@ -43,4 +43,7 @@
     .HTMLViewer p {
       font-size: 8px;
     }
+    .HTMLViewer h1 {
+      font-size: 15px;
+    }
 }
