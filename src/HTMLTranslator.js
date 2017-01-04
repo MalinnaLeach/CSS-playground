@@ -30,7 +30,7 @@ class HTMLTranslator extends Component {
 
   indentGenerator(indent) {
     var indents = [];
-    for (var i=1; i<=indent+4; i++) {
+    for (var i=1; i<=indent+2; i++) {
       indents.push(<span>&nbsp;</span>)
     }
     return indents

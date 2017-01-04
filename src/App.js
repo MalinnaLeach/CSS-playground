@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header updateView={this.updateView}/>
-        <Container key="background" className="background" style={{backgroundColor: "white", textAlign: "center", fontFamily: "sans-serif"}} rerenderWholeApp={this.rerenderWholeApp}/>
+        <Container key="background" className="background" style={{backgroundColor: "white", height: "100vh", textAlign: "center", fontFamily: "sans-serif"}} rerenderWholeApp={this.rerenderWholeApp}/>
         {this.showView()}
       </div>
     );
