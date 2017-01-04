@@ -34,7 +34,7 @@ class Menu extends Component {
           </div>
           <div className="createsection">
              <h3>Create section</h3>
-             <input id="classInput" type="text" name="className" placeholder="Div class name" onChange={this.handleClassName}/>
+             <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
              <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new section</button>
            </div>
         </div>
@@ -55,12 +55,12 @@ class Menu extends Component {
               <input id="classInput" type="text" name="className" placeholder="Section name" onChange={this.handleClassName}/>
               <button id="newDiv" className="textbutton" onClick={this.handleNewDiv}>Create new section</button>
             </div>
-            <div id="textDiv">
-              <div id="addText" className="settingSection">
+            <div id="textDiv" className="settingSection">
+              <div id="addText" >
                 <h5>Add text:</h5>
                 <button id="newTitle" className="textbutton" onClick={this.handleNewTitle}>Add title</button>
               </div>
-              <div id="addParagraph" className="settingSection">
+              <div id="addParagraph">
                 <button id="newParagraph" className="textbutton" onClick={this.handleNewParagraph}>Add paragraph</button>
               </div>
             </div>
@@ -75,11 +75,11 @@ class Menu extends Component {
             <h3>Set the dimensions</h3>
             <div id="widthDiv" className="settingSection">
               <h5>Section width:</h5>
-              <input id="divWidthInput" type="number" name="width" placeholder="Set section width" onChange={this.setDivWidth}/>%
+              <input id="divWidthInput" type="number" name="width" placeholder="Set width" onChange={this.setDivWidth}/>%
             </div>
             <div id="heightDiv" className="settingSection">
               <h5>Section height:</h5>
-              <input id="divHeightInput" type="number" name="height" placeholder="Set section height" onChange={this.setDivHeight}/>%
+              <input id="divHeightInput" type="number" name="height" placeholder="Set height" onChange={this.setDivHeight}/>%
             </div>
           </div>
 

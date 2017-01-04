@@ -6,7 +6,6 @@ import AddText from './AddText'
 import AddImage from './AddImage'
 import cssModule from './cssModule'
 import htmlModule from './htmlModule';
-import '../public/css/Container.css';
 
 class Container extends Component {
   constructor(props) {
@@ -68,7 +67,7 @@ class Container extends Component {
 
   renderImage() {
     return this.state.images.map((url, index) => (
-      <AddImage key={index} imageUrl={url} height="88vh" className={"img"+String(index)} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
+      <AddImage key={index} imageUrl={url} height="30vh" className={"img"+String(index)} parent={this.state.className} rerenderWholeApp={this.props.rerenderWholeApp}/>
     ))
   }
 

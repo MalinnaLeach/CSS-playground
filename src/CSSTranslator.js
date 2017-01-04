@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cssModule from './cssModule';
+import '../public/css/CSSViewer.css';
 
 class CSSTranslator extends Component {
  constructor(props) {
@@ -19,8 +20,7 @@ class CSSTranslator extends Component {
 
  render () {
    return (
-     <div className="cssCode" style={{textAlign: "left",
-       margin: 10}}>
+     <div>
        <p>.{this.props.name} &nbsp;&#123;</p>
        {this.cssLine(cssModule[this.props.name])}
        <p> &#125; </p>
